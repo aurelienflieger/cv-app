@@ -1,6 +1,5 @@
-@import url('../../node_modules/cropperjs/dist/cropper.css');
 @import url('./fonts.css');
-@import url('./normalize.css');
+@import url('./normaliser.css');
 
 .App {
     height: inherit;

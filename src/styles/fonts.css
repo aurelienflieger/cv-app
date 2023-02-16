@@ -1,3 +1,5 @@
+/* Roboto */
+
 @font-face {
     font-family: 'Roboto';
     src: url(../assets/fonts/Roboto/Roboto-Thin.ttf) format('truetype');
@@ -75,6 +77,8 @@
     font-style: italic;
     font-weight: 900;
 }
+
+/* Mali */
 
 @font-face {
     font-family: 'Mali';
