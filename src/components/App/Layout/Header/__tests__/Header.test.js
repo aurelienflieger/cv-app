@@ -1,5 +1,5 @@
 import Header from "../Header";
-import createMatchMedia from "../../../../jest/helpers";
+import createMatchMedia from "../../../../../jest/helpers";
 import { render, screen } from "@testing-library/react";
 
 describe("The header is fully displayed.", () => {
