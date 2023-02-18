@@ -1,7 +1,10 @@
 @import url('./fonts.css');
 @import url('./normaliser.css');
+@import url('./CV.css');
 
 .App {
+    display: flex;
     height: inherit;
+    justify-content: center;
     width: inherit;
 }
