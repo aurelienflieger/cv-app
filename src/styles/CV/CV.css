@@ -1,0 +1,262 @@
+:root {
+    --clr-accent: hsl(345, 61%, 62%);
+    --clr-grey-l: hsl(40, 5%, 80%);
+    --clr-grey-r: hsl(40, 5%, 50%);
+    --clr-grey-b: hsl(40, 5%, 20%);
+    --fs-s: 12px;
+    --fs-m: 16px;
+    --fs-l: 24px;
+    --gap-s: 4px;
+    --gap-sm: 8px;
+    --gap-m: 16px;
+    --gap-l: 24px;
+}
+
+.CV {
+    align-self: center;
+    display: grid;
+    gap: var(--gap-m);
+    width: 600px;
+    height: 800px;
+    border: 2px solid black;
+    border-radius: 10px;
+    grid-template-columns: 375px 175px;
+    padding: 25px;
+}
+
+.CV__section-title {
+    color: var(--clr-accent);
+    font-family: 'Roboto-Black';
+    font-size: var(--fs-m);
+}
+
+.CV__entry-and-bar-group {
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap-l);
+}
+
+.CV__entry-title {
+    font-family: 'Roboto-Bold';
+    color: var(--clr-grey-b);
+    font-size: var(--fs-s);
+}
+
+.CV__entry-date {
+    font-family: 'Roboto-Regular';
+    font-size: var(--fs-s);
+    color: var(--clr-accent);
+}
+
+.CV__entry-text {
+    font-family: 'Roboto-Regular';
+    font-size: var(--fs-s);
+    text-align: left;
+    color: var(--clr-grey-r);
+}
+
+.CV__bar {
+    background-color: var(--clr-grey-l);
+    width: 1px;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+
+.CV__left-pane {
+    display: grid;
+    gap: var(--gap-sm);
+    grid-column: 1;
+}
+
+.CV__eye-catcher {
+    display: flex;
+    flex-direction: row;
+    grid-row: 1;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--gap-m);
+}
+
+.CV__eye-catcher__photo {
+    width: 96px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 1px 1px 15px -7px #000000;
+}
+
+.CV__eye-catcher__name {
+    font-family: 'Roboto-Medium';
+    font-size: var(--fs-l);
+}
+
+.CV__eye-catcher__right-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.CV__eye-catcher__localization {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--gap-s);
+}
+
+.CV__eye-catcher__localization-icon {
+    width: 8px;
+    height: 8px;
+    fill: var(--clr-grey-r);
+}
+
+.CV__eye-catcher__work-field {
+    font-family: 'Roboto-Regular';
+    color: var(--clr-accent);
+    font-size: var(--fs-s);
+}
+
+.CV__eye-catcher__localization {
+    font-family: 'Roboto-Regular';
+    color: var(--clr-grey-r);
+    font-size: var(--fs-s);
+
+}
+
+.CV__profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    grid-row: 2;
+    gap: var(--gap-sm);
+}
+
+.CV_career {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    grid-row: 3;
+    gap: var(--gap-sm);
+}
+
+.CV__entries {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-m);
+}
+
+.CV__education {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-sm);
+    justify-content: flex-start;
+    grid-row: 4;
+}
+
+.CV__right-pane {
+    display: grid;
+    grid-template-rows: repeat(4, 150px);
+    grid-column: 2;
+    align-content: space-evenly;
+    justify-items: center;
+    border-left: 1px solid var(--clr-grey-l);
+}
+
+.CV__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    grid-row: 1;
+}
+
+.CV__details-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-s);
+}
+
+.CV__details-group>p:last-child {
+    color: var(--clr-accent);
+}
+
+.CV__languages {
+    gap: var(--gap-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    grid-row: 2;
+}
+
+.CV__hobbies {
+    gap: var(--gap-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    grid-row: 3;
+}
+
+.CV__tools {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: var(--gap-sm);
+    grid-row: 4;
+}
+
+.CV__skills-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: var(--gap-m);
+}
+
+.CV__name-and-skill {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-s);
+}
+
+.CV__name-and-skill>.CV__entry-text {
+    max-width: 80px;
+}
+
+.progress-bar {
+    height: 3px;
+    width: 100px;
+    background-color: var(--clr-grey-l);
+}
+
+.progress-bar.level-5 {
+    background-color: var(--clr-accent);
+}
+
+.progress-bar.level-4::after {
+    position: absolute;
+    content: '';
+    width: 90px;
+    height: 3px;
+    background-color: var(--clr-accent);
+}
+
+.progress-bar.level-3::after {
+    position: absolute;
+    content: '';
+    width: 80px;
+    height: 3px;
+    background-color: var(--clr-accent);
+}
+
+.progress-bar.level-2::after {
+    position: absolute;
+    content: '';
+    width: 70px;
+    height: 3px;
+    background-color: var(--clr-accent);
+}
+
+.progress-bar.level-1::after {
+    position: absolute;
+    content: '';
+    width: 60px;
+    height: 3px;
+    background-color: var(--clr-accent);
+}

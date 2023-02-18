@@ -1,6 +1,6 @@
 @import url('./fonts.css');
 @import url('./normaliser.css');
-@import url('./CV.css');
+@import url('./CV/CV.css');
 
 .App {
     display: flex;
