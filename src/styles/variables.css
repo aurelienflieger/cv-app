@@ -1,0 +1,29 @@
+:root {
+    /* for margin, padding, gap */
+    --xs: 0.5rem;
+    --s: 1rem;
+    --sm: 1.5rem;
+    --m: 2rem;
+    --ml: 2.5rem;
+    --l: 3rem;
+    /* colors */
+    --clr-grey-100: hsl(0, 0%, 95%);
+    --clr-grey-200: hsl(0, 0%, 85%);
+    --clr-grey-300: hsl(0, 0%, 75%);
+    --clr-grey-400: hsl(0, 0%, 65%);
+    --clr-grey-500: hsl(0, 12%, 25%);
+    --clr-grey-600: hsl(0, 12%, 20%);
+    --clr-grey-700: hsl(0, 12%, 15%);
+    --clr-grey-800: hsl(0, 12%, 10%);
+    --clr-grey-900: hsl(0, 12%, 5%);
+    --clr-error: hsl(0, 73%, 30%);
+    --clr-btn-1: hsl(180, 100%, 25%);
+    /* borders */
+    --br-rad-s: 5px;
+    --br-rad-round: 50%;
+    /* box shadows */
+    --box-shadow: 2px 3px 17px -9px var(--clr-grey-900);
+    /* heights */
+    --height-form: 500px;
+    --height-btn-s: 120px;
+}

@@ -1,0 +1,86 @@
+.general-information {
+    justify-content: center;
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.general-information>form {
+    display: grid;
+    justify-content: stretch;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: repeat(7, 0.1fr);
+    grid-template-areas:
+        'firstName lastName'
+        'phone email'
+        'birthdate workField'
+        'home city'
+        'country country'
+        'introduction introduction'
+        'nextSection nextSection';
+    width: 100%;
+    gap: var(--s);
+}
+
+@media (max-width: 500px) {
+    .general-information>form {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(11, 1fr);
+        grid-template-areas:
+            'firstName'
+            'lastName'
+            'phone'
+            'email'
+            'birthdate'
+            'workField'
+            'home'
+            'city'
+            'country'
+            'introduction'
+            'nextSection';
+    }
+}
+
+.general-information>form>div:first-child {
+    grid-area: firstName;
+}
+
+.general-information>form>div:nth-child(2) {
+    grid-area: lastName;
+}
+
+.general-information>form>div:nth-child(3) {
+    grid-area: phone;
+}
+
+.general-information>form>div:nth-child(4) {
+    grid-area: email;
+}
+
+.general-information>form>div:nth-child(5) {
+    grid-area: birthdate;
+}
+
+.general-information>form>div:nth-child(6) {
+    grid-area: workField;
+}
+
+.general-information>form>div:nth-child(7) {
+    grid-area: home;
+}
+
+.general-information>form>div:nth-child(8) {
+    grid-area: city;
+}
+
+.general-information>form>div:nth-child(9) {
+    grid-area: country;
+}
+
+.general-information>form>div:nth-child(10) {
+    grid-area: introduction;
+}
+
+.general-information>form>div:nth-child(11) {
+    grid-area: nextSection;
+}

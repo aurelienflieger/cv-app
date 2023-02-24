@@ -1,0 +1,84 @@
+.CV__right-pane {
+    display: grid;
+    grid-template-rows: repeat(4, 150px);
+    grid-column: 2;
+    align-content: space-evenly;
+    justify-items: center;
+    border-left: 1px solid var(--clr-grey-l);
+}
+
+.CV__right-pane__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: var(--gap-s);
+    max-width: 100px;
+
+}
+
+.CV__details-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-s);
+}
+
+.CV__details-group>p:last-child {
+    color: var(--clr-accent);
+}
+
+.CV__skills-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: var(--gap-m);
+}
+
+.CV__name-and-skill {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-s);
+}
+
+/* Progress Bar */
+
+.progress-bar {
+    height: 3px;
+    width: 100px;
+    background-color: var(--clr-grey-l);
+}
+
+.progress-bar.level-5 {
+    background-color: var(--clr-accent);
+}
+
+.progress-bar.level-4::after {
+    position: absolute;
+    content: '';
+    width: 90px;
+    height: 3px;
+    background-color: var(--clr-accent);
+}
+
+.progress-bar.level-3::after {
+    position: absolute;
+    content: '';
+    width: 80px;
+    height: 3px;
+    background-color: var(--clr-accent);
+}
+
+.progress-bar.level-2::after {
+    position: absolute;
+    content: '';
+    width: 70px;
+    height: 3px;
+    background-color: var(--clr-accent);
+}
+
+.progress-bar.level-1::after {
+    position: absolute;
+    content: '';
+    width: 60px;
+    height: 3px;
+    background-color: var(--clr-accent);
+}

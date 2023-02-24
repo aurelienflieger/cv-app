@@ -31,7 +31,7 @@ const EyeCatcher = () => {
         src={defaultPicture}
       />
       <div className="CV__eye-catcher__right-group">
-        <h1 className="CV__eye-catcher__name">Daniel Larcher</h1>
+        <h1 className="CV__eye-catcher__name">Horst McJumbo</h1>
         <span className="CV__eye-catcher__work-field">
           User Experience Designer
         </span>
@@ -48,7 +48,7 @@ const EyeCatcher = () => {
 
 const Profile = () => {
   return (
-    <div className="CV__profile">
+    <div className="CV__profile CV__left-pane__section">
       <h3 className="CV__section-title">Profile</h3>
       <div className="CV__entry-and-bar-group">
         <span className="CV__bar" />
@@ -65,7 +65,7 @@ const Profile = () => {
 
 const Career = () => {
   return (
-    <div className="CV_career">
+    <div className="CV__career CV__left-pane__section">
       <h3 className="CV__section-title">Career</h3>
       <div className="CV__entry-and-bar-group">
         <span className="CV__bar" />
@@ -118,7 +118,7 @@ const Career = () => {
 
 const Education = () => {
   return (
-    <div className="CV__education">
+    <div className="CV__education CV__left-pane__section">
       <h3 className="CV__section-title">Education</h3>
       <div className="CV__entry-and-bar-group">
         <span className="CV__bar" />

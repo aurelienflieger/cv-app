@@ -2,7 +2,7 @@ import React from "react";
 
 const Details = () => {
   return (
-    <div className="CV__details">
+    <div className="CV__right-pane__section">
       <h3 className="CV__section-title">Details</h3>
       <div className="CV__details-group">
         <p className="CV__entry-text">05/08/1998</p>
@@ -17,7 +17,7 @@ const Details = () => {
 
 const Languages = () => {
   return (
-    <div className="CV__languages">
+    <div className="CV__right-pane__section">
       <h3 className="CV__section-title">Languages</h3>
       <div className="CV__skills-group">
         <div className="CV__name-and-skill">
@@ -39,7 +39,7 @@ const Languages = () => {
 
 const Hobbies = () => {
   return (
-    <div className="CV__hobbies">
+    <div className="CV__right-pane__section">
       <h3 className="CV__section-title">Hobbies</h3>
       <div className="CV__skills-group">
         <div className="CV__name-and-skill">
@@ -61,7 +61,7 @@ const Hobbies = () => {
 
 const Tools = () => {
   return (
-    <div className="CV__tools">
+    <div className="CV__right-pane__section">
       <h3 className="CV__section-title">Tools</h3>
       <div className="CV__skills-group">
         <div className="CV__name-and-skill">

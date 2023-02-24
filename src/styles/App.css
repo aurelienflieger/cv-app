@@ -1,10 +1,21 @@
 @import url('./fonts.css');
 @import url('./normaliser.css');
+@import url('./variables.css');
+@import url('./Form/Buttons.css');
+@import url('./Form/Inputs.css');
+@import url('./Form/Frame.css');
+@import url('./Form/Header');
+@import url('./Form/FormManager.css');
+@import url('./Form/GeneralInformation.css');
 @import url('./CV/CV.css');
+
+body {
+    background-color: var(--clr-grey-100);
+}
 
 .App {
     display: flex;
-    height: inherit;
+    height: 100%;
     justify-content: center;
-    width: inherit;
+    width: 100%;
 }
