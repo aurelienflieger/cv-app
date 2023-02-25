@@ -1,10 +1,10 @@
-const SideImage = ({ backgroundImage }) => {
+const SideImage = ({ backgroundImage, currentSectionName }) => {
   return (
     <div
-      className={`side-background-image`}
-      aria-label="side-background-image"
+      className={`side-image side-image_${currentSectionName}`}
+      aria-label="side-image"
       style={{
-        backgroundImage: `url(${backgroundImage}`,
+        backgroundImage: `url(${backgroundImage})`,
       }}
     />
   );

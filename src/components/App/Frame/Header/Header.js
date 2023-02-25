@@ -5,9 +5,9 @@ const Header = ({ backgroundImage, currentSectionName, isSmallScreen }) => {
 
   return (
     <header
-      className="header"
+      className={`header header_${currentSectionName}`}
       style={{
-        backgroundImage: isSmallScreen ? backgroundImage : null,
+        backgroundImage: isSmallScreen ? `url(${backgroundImage})` : null,
       }}
     >
       <img className="header-icon" alt="header icon" src={iconSrc} />

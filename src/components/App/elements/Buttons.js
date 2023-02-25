@@ -1,11 +1,12 @@
 const AddEntryButton = ({ customHandler }) => {
   return (
     <button
-      className="add-entry"
+      type="button"
+      className="add-entry button"
       aria-label="add-entry"
       onClick={customHandler}
     >
-      Add a new entry
+      +
     </button>
   );
 };
@@ -13,7 +14,8 @@ const AddEntryButton = ({ customHandler }) => {
 const NextSectionButton = ({ customHandler, text }) => {
   return (
     <button
-      className="next-section"
+      type="submit"
+      className="next-section button"
       aria-label="next-section"
       onClick={customHandler}
     >
@@ -25,7 +27,8 @@ const NextSectionButton = ({ customHandler, text }) => {
 const SkipSectionButton = ({ customHandler, text }) => {
   return (
     <button
-      className="skip-section"
+      type="submit"
+      className="skip-section button"
       aria-label="skip-section"
       onClick={customHandler}
     >
@@ -37,7 +40,8 @@ const SkipSectionButton = ({ customHandler, text }) => {
 const SaveReviewedSectionButton = ({ customHandler }) => {
   return (
     <button
-      className="save-reviewed-section"
+      type="submit"
+      className="save-reviewed-section button"
       aria-label="save-reviewed-section"
       onClick={customHandler}
     >

@@ -2,7 +2,7 @@ const SelectionToggler = ({
   currentImage,
   section,
   currentlySelected,
-  selectSectionAndUpdateImage,
+  selectSection,
 }) => {
   const lowercasedSection = section[0].toLowerCase() + section.slice(1);
   return (
@@ -10,7 +10,7 @@ const SelectionToggler = ({
       <button
         className={`selection-toggler ${currentlySelected && "toggled"}`}
         aria-label="selection-toggler"
-        onClick={selectSectionAndUpdateImage}
+        onClick={selectSection}
       >
         <span
           className="selection-toggler__text"

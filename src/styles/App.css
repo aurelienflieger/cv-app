@@ -1,12 +1,14 @@
-@import url('./fonts.css');
-@import url('./normaliser.css');
-@import url('./variables.css');
-@import url('./Form/Buttons.css');
-@import url('./Form/Inputs.css');
-@import url('./Form/Frame.css');
-@import url('./Form/Header');
+@import url('./shared/fonts.css');
+@import url('./shared/normaliser.css');
+@import url('./shared/variables.css');
+@import url('./elements/Buttons.css');
+@import url('./elements/Inputs.css');
+@import url('./Form/Frame/Frame.css');
+@import url('./Form/Frame/Header.css');
+@import url('./Form/Frame/SideImage.css');
 @import url('./Form/FormManager.css');
 @import url('./Form/GeneralInformation.css');
+@import url('./Form/SelectionMenu.css');
 @import url('./CV/CV.css');
 
 body {

@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useField } from "formik";
 import { generateUniqueKeys } from "../Form/shared-helpers";
+import {
+  toggleErrorStyle,
+  toggleSuccessStyle,
+  toggleFocusStyle,
+} from "./handlers";
 
 export const InputBox = ({ label, customChangeHandler, ...props }) => {
   const [field, meta] = useField(props);
+  const [lastTouched, setLastTouched] = useState("");
+  useEffect(() => {
+    meta.touched && meta.error && toggleErrorStyle(lastTouched);
+  });
+
   return (
     <div className="input-box">
       <label className="input-box__label" htmlFor={props.name}>
@@ -13,7 +23,15 @@ export const InputBox = ({ label, customChangeHandler, ...props }) => {
         aria-label={props.name}
         className="input-box__field"
         value={field.value}
-        onBlur={props.handleBlur}
+        onBlur={(event) => {
+          props.handleBlur && props.handleBlur(event);
+          field.onBlur(event);
+          toggleFocusStyle(event);
+          if (meta.touched && meta.error) toggleErrorStyle(event);
+          if (meta.touched && !meta.error) toggleSuccessStyle(event);
+          setLastTouched(event);
+        }}
+        onFocus={toggleFocusStyle}
         onChange={(event) => {
           customChangeHandler && customChangeHandler(event);
           field.onChange(event);
@@ -28,14 +46,14 @@ export const InputBox = ({ label, customChangeHandler, ...props }) => {
 };
 
 export const InputBoxWithDropdown = ({ contents, ...props }) => {
-  const [selection, setSelection] = useState("");
+  const [field] = useField(props);
+  const [selection, setSelection] = useState(field.value);
   const [dropdown, showDropdown] = useState(false);
   const showDropdownMatch = (event) => {
     showDropdown(true);
     setSelection(event.target.value);
   };
   const keys = generateUniqueKeys(300);
-  const [field] = useField(props);
 
   return (
     <div className="input-box-with-dropdown">
@@ -45,16 +63,16 @@ export const InputBoxWithDropdown = ({ contents, ...props }) => {
         label={props.label}
         placeholder={props.placeholder}
         customChangeHandler={showDropdownMatch}
-        value={selection || field.value}
+        value={selection}
       />
       {dropdown && (
         <div className="dropdown">
-          {contents.map((item, index) => {
+          {contents.map((item) => {
             return (
               item.includes(selection) && (
                 <input
                   className="dropdown-item"
-                  key={keys[index]}
+                  key={keys.shift()}
                   type="button"
                   value={item}
                   onClick={(event) => {

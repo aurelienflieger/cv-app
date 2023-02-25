@@ -117,13 +117,8 @@ const FormManager = () => {
   };
 
   return (
-    <Frame
-      currentSectionName={currentSectionName}
-    >
-      <div
-        className={`form-manager`}
-        aria-label="form-manager"
-      >
+    <Frame currentSectionName={currentSectionName}>
+      <div className={`form-manager`} aria-label="form-manager">
         <div className="hook-and-counter">
           <HookText currentSectionName={currentSectionName} />
           <CounterBox
@@ -144,6 +139,7 @@ const FormManager = () => {
             closeSelectionMenuAndDisplaySections={
               closeSelectionMenuAndDisplaySections
             }
+            immutableSectionsForMapping={[...formSectionNames.slice(1)]}
             optionalSections={optionalSections}
             setOptionalSections={setOptionalSections}
           />

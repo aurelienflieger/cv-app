@@ -1,0 +1,109 @@
+.selection-menu {
+    background-color: antiquewhite;
+    display: grid;
+    gap: clamp(var(--s), 5vw, var(--sm));
+    grid-template-columns: auto;
+    grid-template-rows: repeat(8, auto);
+    justify-content: stretch;
+    height: 100%;
+    width: 100%;
+}
+
+@media (max-width: 1200px) {
+    .selection-menu {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, auto);
+        grid-template-areas:
+            'profilePicture career'
+            'education hobbies'
+            'tools languages'
+            'addEntry addEntry'
+            'next next'
+        ;
+    }
+
+    .selection-menu>button:first-child {
+        grid-area: profilePicture;
+    }
+
+    .selection-menu>button:nth-child(2) {
+        grid-area: career;
+    }
+
+    .selection-menu>button:nth-child(3) {
+        grid-area: education;
+    }
+
+    .selection-menu>button:nth-child(4) {
+        grid-area: hobbies;
+    }
+
+    .selection-menu>button:nth-child(5) {
+        grid-area: tools;
+    }
+
+    .selection-menu>button:nth-child(6) {
+        grid-area: languages;
+    }
+
+    .selection-menu>button:nth-child(7) {
+        grid-area: addEntry;
+    }
+
+    .selection-menu>button:nth-child(8) {
+        grid-area: next;
+    }
+}
+
+.selection-toggler {
+    align-items: center;
+    background-color: var(--clr-white);
+    border: none;
+    border-radius: var(--br-rad-xs);
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: row;
+    gap: var(--xs);
+    height: 100%;
+    justify-content: space-between;
+    padding: var(--sm);
+    width: 100%;
+}
+
+.selection-toggler {
+    align-items: center;
+    background-color: var(--clr-white);
+    border: none;
+    border-radius: var(--br-rad-xs);
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: row;
+    gap: var(--xs);
+    height: 100%;
+    justify-content: space-between;
+    padding: var(--sm);
+    width: 100%;
+}
+
+.selection-toggler.toggled {
+    outline: clamp(1px, calc(1px + 0.390625vw), 5px) solid var(--clr-accent);
+}
+
+.selection-toggler:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.selection-toggler__text {
+    color: var(--clr-grey-400);
+    font-family: 'Roboto-Medium';
+    font-size: var(--fs-input);
+}
+
+.selection-toggler__image {
+    width: 50px;
+}
+
+.selection-menu>button {
+    grid-column: 1/3;
+}

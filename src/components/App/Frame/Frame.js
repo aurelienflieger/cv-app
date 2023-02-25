@@ -7,7 +7,7 @@ const Frame = ({ currentSectionName, children }) => {
   const [darkTheme, setDarkTheme] = useState(false);
   const sideImageDisplayed =
     currentSectionName !== "Review" && currentSectionName !== "Download";
-  const isSmallScreen = useMediaQuery("(min-width:1200px)");
+  const isSmallScreen = useMediaQuery("(max-width:1200px)");
   const backgroundImage = require(`../../../assets/backgrounds/${currentSectionName}_${
     darkTheme ? "dark" : "light"
   }.jpg`);
@@ -15,13 +15,19 @@ const Frame = ({ currentSectionName, children }) => {
   return (
     <div className="frame" aria-label="frame">
       <Header
+        backgroundImage={backgroundImage}
         currentSectionName={currentSectionName}
         isSmallScreen={isSmallScreen}
       />
-      <div className={`section-and-side-background`}>
+      <div
+        className={`section-and-side section-and-side_${currentSectionName}`}
+      >
         {children}
-        {isSmallScreen && sideImageDisplayed && (
-          <SideImage backgroundImage={backgroundImage} />
+        {!isSmallScreen && sideImageDisplayed && (
+          <SideImage
+            backgroundImage={backgroundImage}
+            currentSectionName={currentSectionName}
+          />
         )}
       </div>
     </div>

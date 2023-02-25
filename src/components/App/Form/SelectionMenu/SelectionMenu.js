@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { AddEntryButton, NextSectionButton } from "../../elements/Buttons";
 import SelectionToggler from "../../elements/SelectionToggler";
 import { generateUniqueKeys } from "../shared-helpers";
@@ -5,10 +6,19 @@ import { generateUniqueKeys } from "../shared-helpers";
 const SelectionMenu = ({
   closeSelectionMenuAndDisplaySections,
   displayReviewPage,
+  immutableSectionsForMapping,
   optionalSections,
   setOptionalSections,
 }) => {
   const keys = generateUniqueKeys(10);
+
+  const getCurrentImage = (section) => {
+    const image = require(`../../../../assets/header-icons/${section}_${
+      isSelected(section) ? "selected" : "default"
+    }.png`);
+    return image;
+  };
+
   const isSelected = (currentSectionName) =>
     !!optionalSections.includes(currentSectionName);
 
@@ -18,7 +28,7 @@ const SelectionMenu = ({
         const withoutCurrentSection = pastSections.filter(
           (section) => section !== currentSectionName
         );
-        return [withoutCurrentSection];
+        return [...withoutCurrentSection];
       } else {
         return [...pastSections, currentSectionName];
       }
@@ -27,11 +37,9 @@ const SelectionMenu = ({
 
   return (
     <main className="selection-menu">
-      {optionalSections.map((section) => (
+      {immutableSectionsForMapping.map((section) => (
         <SelectionToggler
-          currentImage={require(`../../../../assets/header-icons/${section}_${
-            isSelected(section) ? "selected" : "default"
-          }`)}
+          currentImage={getCurrentImage(section)}
           currentlySelected={isSelected(section)}
           section={section}
           selectSection={() => selectSection(section)}

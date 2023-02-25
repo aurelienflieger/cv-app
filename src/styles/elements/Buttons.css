@@ -1,0 +1,62 @@
+.button {
+    color: var(--clr-white);
+    font-size: var(--fs-input);
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.next-section {
+    background-color: var(--clr-btn-1);
+    border: none;
+    color: white;
+    grid-column: 1/3;
+    min-height: var(--height-btn-s);
+    outline: none;
+    width: 100%;
+}
+
+.add-entry {
+    align-items: center;
+    background-color: var(--clr-accent);
+    border: none;
+    border-radius: var(--br-rad-round);
+    cursor: pointer;
+    display: grid;
+    font-size: var(--fs-add);
+    height: 100px;
+    justify-content: center;
+    justify-self: center;
+    outline: none;
+    position: relative;
+    place-content: center;
+    text-align: center;
+    width: 100px;
+}
+
+@media (min-width: 1200px) {
+    .add-entry {
+        z-index: 1;
+    }
+
+    .add-entry::after {
+        align-items: center;
+        background-color: var(--clr-accent);
+        border-radius: 80px;
+        content: 'Add a new entry';
+        display: grid;
+        font-size: calc(12px + 0.390625vw);
+        height: 80px;
+        justify-content: flex-end;
+        padding: 1rem;
+        position: absolute;
+        transform: translateX(20%);
+        width: 200px;
+        z-index: -1;
+    }
+}

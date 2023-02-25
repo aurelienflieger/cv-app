@@ -6,8 +6,8 @@
 }
 
 .general-information>form {
+    align-items: center;
     display: grid;
-    justify-content: stretch;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-rows: repeat(7, 0.1fr);
     grid-template-areas:
@@ -19,26 +19,8 @@
         'introduction introduction'
         'nextSection nextSection';
     width: 100%;
+    min-width: 250px;
     gap: var(--s);
-}
-
-@media (max-width: 500px) {
-    .general-information>form {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(11, 1fr);
-        grid-template-areas:
-            'firstName'
-            'lastName'
-            'phone'
-            'email'
-            'birthdate'
-            'workField'
-            'home'
-            'city'
-            'country'
-            'introduction'
-            'nextSection';
-    }
 }
 
 .general-information>form>div:first-child {

@@ -1,0 +1,27 @@
+.header {
+    align-items: center;
+    background-attachment: fixed;
+    background-color: var(--clr-white);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    padding: var(--l);
+}
+
+.header-icon {
+    width: clamp(36px, 3%, 48px);
+}
+
+.header_GeneralInformation {
+    background-position: 0px -200px;
+}
+
+@media (max-width: 500px) {
+    .header {
+        padding: var(--xs);
+    }
+
+    .header_GeneralInformation {
+        background-position: -100px -250px;
+    }
+}

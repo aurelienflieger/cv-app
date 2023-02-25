@@ -1,5 +1,12 @@
 :root {
+    /* font-size */
+    --fs-fluid: 0.390625vw;
+    --fs-input: calc(12px + 0.390625vw);
+    --fs-counter: calc(16px + 0.390625vw);
+    --fs-hook: calc(24px + 0.390625vw);
+    --fs-add: 5rem;
     /* for margin, padding, gap */
+    --xxs: 0.2rem;
     --xs: 0.5rem;
     --s: 1rem;
     --sm: 1.5rem;
@@ -7,23 +14,31 @@
     --ml: 2.5rem;
     --l: 3rem;
     /* colors */
+    --clr-white: white;
     --clr-grey-100: hsl(0, 0%, 95%);
-    --clr-grey-200: hsl(0, 0%, 85%);
-    --clr-grey-300: hsl(0, 0%, 75%);
-    --clr-grey-400: hsl(0, 0%, 65%);
+    --clr-grey-200: hsl(0, 6%, 45%);
+    --clr-grey-300: hsl(0, 6%, 35%);
+    --clr-grey-400: hsl(0, 6%, 30%);
     --clr-grey-500: hsl(0, 12%, 25%);
     --clr-grey-600: hsl(0, 12%, 20%);
     --clr-grey-700: hsl(0, 12%, 15%);
     --clr-grey-800: hsl(0, 12%, 10%);
     --clr-grey-900: hsl(0, 12%, 5%);
+    --clr-accent: hsl(336, 57%, 60%);
     --clr-error: hsl(0, 73%, 30%);
+    --clr-success: hsl(120, 100%, 25%);
+    --clr-focus: hsl(180, 80%, 30%);
     --clr-btn-1: hsl(180, 100%, 25%);
     /* borders */
+    --br-rad-xs: 1px;
     --br-rad-s: 5px;
+    --br-rad-xl: 80px;
     --br-rad-round: 50%;
     /* box shadows */
     --box-shadow: 2px 3px 17px -9px var(--clr-grey-900);
     /* heights */
     --height-form: 500px;
-    --height-btn-s: 120px;
+    --height-btn-s: 100px;
+    /* width */
+    --max-width-input: 120px;
 }
