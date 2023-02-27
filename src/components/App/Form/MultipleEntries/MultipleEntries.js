@@ -77,7 +77,7 @@ const MultipleEntries = ({
 
   return (
     <main
-      className={`multiple-entries multiple-entries_${currentSectionName}`}
+      className={`multiple-entries multiple-entries ${currentSectionName}`}
       name="multiple-entries"
     >
       {workingOnEntry && (
@@ -92,7 +92,7 @@ const MultipleEntries = ({
 
       {!workingOnEntry && !!savedEntries.length && (
         <div
-          className={`entries-viewer entries-viewer_${currentSectionName}`}
+          className={`entries-viewer entries-viewer ${currentSectionName}`}
           aria-label="entries-viewer"
         >
           {savedEntries.map((entry, index) => (

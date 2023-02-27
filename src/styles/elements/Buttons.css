@@ -8,7 +8,7 @@
 
 .button {
     color: var(--clr-white);
-    font-size: var(--fs-input);
+    font-size: var(--fs-sm);
 }
 
 .button:active {
@@ -28,7 +28,7 @@
     background-color: var(--clr-btn);
     border: none;
     grid-column: 1/3;
-    min-height: var(--height-btn-s);
+    min-height: var(--min-height-reg-btn);
     outline: none;
     width: 100%;
 }
@@ -58,7 +58,7 @@
 
 .add-entry__circle {
     display: grid;
-    font-size: 4rem;
+    font-size: 5rem;
     background-color: var(--clr-accent);
     border-radius: var(--br-rad-round);
     height: var(--size-btn-add);
@@ -71,11 +71,18 @@
     align-items: center;
     border-radius: var(--br-rad-xl);
     display: grid;
-    font-size: clamp(14px, var(--fs-input), 18px);
+    font-size: var(--fs-m);
     height: var(--size-btn-add);
     justify-content: center;
     width: 100%;
     z-index: 1;
+}
+
+
+.add-entry.disabled,
+.add-entry.disabled>* {
+    background-color: var(--clr-grey-200);
+    pointer-events: none;
 }
 
 @media (max-width: 500px) {

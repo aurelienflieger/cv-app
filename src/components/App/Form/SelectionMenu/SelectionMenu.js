@@ -1,7 +1,6 @@
-import { useMemo } from "react";
 import { AddEntryButton, NextSectionButton } from "../../elements/Buttons";
-import SelectionToggler from "../../elements/SelectionToggler";
 import { generateUniqueKeys } from "../shared-helpers";
+import SelectionToggler from "../../elements/SelectionToggler";
 
 const SelectionMenu = ({
   closeSelectionMenuAndDisplaySections,

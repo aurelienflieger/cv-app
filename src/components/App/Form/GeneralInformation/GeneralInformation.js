@@ -15,7 +15,7 @@ const GeneralEducation = ({
   updateDataHistoryAndDisplaySelectionMenu,
 }) => {
   return (
-    <main className="general-information">
+    <main className="section GeneralInformation">
       <Formik
         initialValues={{
           firstName: dataHistory ? dataHistory.firstName : "",

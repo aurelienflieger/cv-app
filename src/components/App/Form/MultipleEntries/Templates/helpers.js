@@ -9,7 +9,6 @@ const getFormikData = (
   isCurrentlyEditing
 ) => {
   const initialValues = () => {
-    console.log(entryBeingEdited)
     return isMainSection(currentSectionName)
       ? {
           status: isCurrentlyEditing ? entryBeingEdited.status : false,

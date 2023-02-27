@@ -1,10 +1,10 @@
 :root {
     /* font-size */
     --fs-fluid: 0.390625vw;
-    --fs-input: calc(12px + 0.390625vw);
-    --fs-counter: calc(16px + 0.390625vw);
-    --fs-hook: calc(24px + 0.390625vw);
-    --fs-add: 5rem;
+    --fs-s: calc(8px + 0.390625vw);
+    --fs-sm: calc(12px + 0.390625vw);
+    --fs-m: calc(14px + 0.390625vw);
+    --fs-l: calc(24px + 0.390625vw);
     /* for margin, padding, gap */
     --xxs: 0.2rem;
     --xs: 0.5rem;
@@ -48,8 +48,11 @@
     --size-inner-checkbox: 60%;
     /* heights */
     --height-form: 500px;
+    --min-height-reg-btn: 120px;
+    --min-height-reg-input: 110px;
     /* width */
     --max-width-input: 120px;
+    --min-width-form: 250px;
     --width-btn: 30px;
     /* scales */
     --scale-clicked: scale(0.95);

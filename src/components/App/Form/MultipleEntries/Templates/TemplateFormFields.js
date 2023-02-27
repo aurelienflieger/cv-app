@@ -6,8 +6,8 @@ import TextBox from "../../../elements/TextBox";
 import Select from "../../../elements/Select";
 
 const TemplateFormFields = ({ currentSectionName }) => {
-  const [endDateFieldDisplayed, displayEndDateField] = useState(false);
   const { contents, dropdown } = getFieldsContents(currentSectionName);
+  const [endDateFieldDisplayed, displayEndDateField] = useState(false);
 
   return isMainSection(currentSectionName) ? (
     <>

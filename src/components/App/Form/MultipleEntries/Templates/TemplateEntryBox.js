@@ -8,7 +8,7 @@ const TemplateEntryBox = (
   removeEntry}
 ) => {
   return (
-    <div className={`entry-box ${currentSectionName}-box`}>
+    <div className={`entry-box ${currentSectionName}`}>
       <TemplateEntryFields
         currentSectionName={currentSectionName}
         entryContents={entryContents}

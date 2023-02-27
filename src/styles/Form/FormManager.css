@@ -12,12 +12,6 @@
     width: 60%;
 }
 
-@media (max-width: 500px) {
-    .form-manager {
-        gap: var(--m);
-    }
-}
-
 .hook-and-counter {
     display: flex;
     flex-direction: column;
@@ -27,7 +21,7 @@
 .hook-text {
     color: var(--clr-grey-700);
     font-family: 'Roboto-Regular';
-    font-size: var(--fs-hook);
+    font-size: var(--fs-l);
 }
 
 .counter-box {
@@ -40,25 +34,31 @@
     background-color: var(--clr-grey-900);
     border-radius: var(--br-rad-round);
     display: flex;
-    height: 20px;
+    height: var(--size-btn-s);
     justify-content: center;
     padding: var(--s);
-    width: 20px;
+    width: var(--size-btn-s);
 }
 
 .counter-number {
     color: var(--clr-white);
     display: grid;
     font-family: 'Roboto-Regular';
-    font-size: var(--fs-counter);
+    font-size: var(--fs-s);
     place-content: center;
 }
 
 .counter-title {
     font-family: 'Roboto-Medium';
-    font-size: var(--fs-counter);
+    font-size: var(--fs-sm);
 }
 
 .form {
     width: 100%;
+}
+
+@media (max-width: 500px) {
+    .form-manager {
+        gap: var(--m);
+    }
 }

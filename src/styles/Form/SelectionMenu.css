@@ -23,21 +23,6 @@
     width: 100%;
 }
 
-.selection-toggler {
-    align-items: center;
-    background-color: var(--clr-white);
-    border: none;
-    border-radius: var(--br-rad-xs);
-    box-shadow: var(--box-shadow);
-    display: flex;
-    flex-direction: row;
-    gap: var(--xs);
-    height: 100%;
-    justify-content: space-between;
-    padding: var(--sm);
-    width: 100%;
-}
-
 .selection-toggler.toggled {
     outline: clamp(1px, calc(1px + 0.390625vw), 5px) solid var(--clr-accent);
 }
@@ -50,7 +35,7 @@
 .selection-toggler__text {
     color: var(--clr-grey-400);
     font-family: 'Roboto-Medium';
-    font-size: var(--fs-input);
+    font-size: var(--fs-sm);
 }
 
 .selection-toggler__image {

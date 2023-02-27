@@ -5,6 +5,6 @@
     flex-shrink: 0;
 }
 
-.side-image_Education {
+.side-image.Education {
     transform: scaleX(-1);
 }

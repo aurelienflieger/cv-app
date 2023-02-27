@@ -12,15 +12,15 @@
     width: clamp(36px, 3%, 48px);
 }
 
-.header_GeneralInformation {
+.header.GeneralInformation {
     background-position: 0px -200px;
 }
 
-.header_ProfilePicture {
+.header.ProfilePicture {
     background-position: 0px -625px;
 }
 
-.header_Career {
+.header.Career {
     background-position: 0px -450px;
 }
 
@@ -29,15 +29,15 @@
         padding: var(--xs);
     }
 
-    .header_GeneralInformation {
+    .header.GeneralInformation {
         background-position: -100px -250px;
     }
 
-    .header_ProfilePicture {
+    .header.ProfilePicture {
         background-position: 0px -350px;
     }
 
-    .header_Career {
+    .header.Career {
         background-position: -200px -530px;
     }
 }
