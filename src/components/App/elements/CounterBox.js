@@ -5,11 +5,11 @@ const CounterBox = ({ currentNumber, currentSectionName }) => {
         <span className="counter-number">{currentNumber}</span>
       </div>
       <span className="counter-title">
-        {currentSectionName === "GeneralInformation"
-          ? "GENERAL INFORMATION"
-          : currentSectionName === "SelectionMenu"
-          ? "SELECTION MENU"
-          : currentSectionName.toUpperCase()}
+        {(currentSectionName === "GeneralInformation" &&
+          "GENERAL INFORMATION") ||
+          (currentSectionName === "SelectionMenu" && "SELECTION MENU") ||
+          (currentSectionName === "ProfilePicture" && "PROFILE PICTURE") ||
+          currentSectionName.toUpperCase()}
       </span>
     </div>
   );

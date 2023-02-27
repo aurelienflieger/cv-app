@@ -18,7 +18,7 @@ const TextBox = ({ label, maxCharacters, ...props }) => {
   });
 
   return (
-    <div className="textbox__wrapper">
+    <div className={`textbox__wrapper ${props.name}`}>
       <div className="label-feedback__wrapper">
         <label className="textbox__label" htmlFor={props.name}>
           {label}
@@ -48,6 +48,7 @@ const TextBox = ({ label, maxCharacters, ...props }) => {
         onChange={(event) => {
           field.onChange(event);
         }}
+        value={field.value}
         {...props}
       />
       {meta.touched && meta.error && (

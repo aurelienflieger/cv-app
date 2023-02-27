@@ -4,7 +4,10 @@ const SelectionToggler = ({
   currentlySelected,
   selectSection,
 }) => {
-  const lowercasedSection = section[0].toLowerCase() + section.slice(1);
+  const lowercasedSection =
+    section === "ProfilePicture"
+      ? "profile picture"
+      : section[0].toLowerCase() + section.slice(1);
   return (
     <>
       <button

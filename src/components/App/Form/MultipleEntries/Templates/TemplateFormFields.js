@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ConditionalCheckbox  from "../../../elements/ConditionalCheckbox";
+import ConditionalCheckbox from "../../../elements/ConditionalCheckbox";
 import { InputBox, InputBoxWithDropdown } from "../../../elements/InputBox";
 import { getFieldsContents, isMainSection } from "./helpers";
 import TextBox from "../../../elements/TextBox";
@@ -28,10 +28,10 @@ const TemplateFormFields = ({ currentSectionName }) => {
         label={contents.context.label}
         placeholder={contents.context.placeholder}
       />
-      <InputBox type="date" role="textbox" name="startDate" label="From" />
       {endDateFieldDisplayed && (
         <InputBox type="date" role="textbox" name="endDate" label="To" />
       )}
+      <InputBox type="date" role="textbox" name="startDate" label="From" />
       <TextBox
         maxCharacters={50}
         name="description"

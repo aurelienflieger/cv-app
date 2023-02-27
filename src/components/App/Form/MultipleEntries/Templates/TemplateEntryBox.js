@@ -2,10 +2,10 @@ import EntryControlManager from "../../../elements/EntryControl";
 import TemplateEntryFields from "./TemplateEntryFields";
 
 const TemplateEntryBox = (
-  currentSectionName,
+  {currentSectionName,
   entryContents,
   prepareEntryForEdit,
-  removeEntry
+  removeEntry}
 ) => {
   return (
     <div className={`entry-box ${currentSectionName}-box`}>

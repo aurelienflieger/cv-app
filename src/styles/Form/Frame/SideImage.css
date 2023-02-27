@@ -2,6 +2,7 @@
     background-size: cover;
     height: 100%;
     width: clamp(500px, 40%, 1500px);
+    flex-shrink: 0;
 }
 
 .side-image_Education {

@@ -16,29 +16,44 @@
     /* colors */
     --clr-white: white;
     --clr-grey-100: hsl(0, 0%, 95%);
-    --clr-grey-200: hsl(0, 6%, 45%);
-    --clr-grey-300: hsl(0, 6%, 35%);
-    --clr-grey-400: hsl(0, 6%, 30%);
+    --clr-grey-200: hsl(0, 0%, 75%);
+    --clr-grey-300: hsl(0, 0%, 55%);
+    --clr-grey-400: hsl(0, 0%, 35%);
     --clr-grey-500: hsl(0, 12%, 25%);
     --clr-grey-600: hsl(0, 12%, 20%);
     --clr-grey-700: hsl(0, 12%, 15%);
     --clr-grey-800: hsl(0, 12%, 10%);
     --clr-grey-900: hsl(0, 12%, 5%);
     --clr-accent: hsl(336, 57%, 60%);
+    --clr-btn: hsl(180, 100%, 25%);
     --clr-error: hsl(0, 73%, 30%);
-    --clr-success: hsl(120, 100%, 25%);
     --clr-focus: hsl(180, 80%, 30%);
-    --clr-btn-1: hsl(180, 100%, 25%);
+    --clr-success: hsl(120, 100%, 25%);
+    --clr-edit: hsl(200, 60%, 50%);
+    --clr-remove: hsl(0, 60%, 50%);
     /* borders */
-    --br-rad-xs: 1px;
+    --br-rad-xs: 2px;
     --br-rad-s: 5px;
+    --br-rad-m: 20px;
+    --br-rad-sm: 40px;
     --br-rad-xl: 80px;
     --br-rad-round: 50%;
     /* box shadows */
     --box-shadow: 2px 3px 17px -9px var(--clr-grey-900);
+    /* sizes */
+    --size-btn: 30px;
+    --size-btn-s: 20px;
+    --size-btn-add: 80px;
+    --size-btn-add_mobile: 100px;
+    --size-inner-checkbox: 60%;
     /* heights */
     --height-form: 500px;
-    --height-btn-s: 100px;
     /* width */
     --max-width-input: 120px;
+    --width-btn: 30px;
+    /* scales */
+    --scale-clicked: scale(0.95);
+    --scale-hover: scale(1.095);
+    /* transition */
+    --trans: 120ms transform ease-in-out;
 }

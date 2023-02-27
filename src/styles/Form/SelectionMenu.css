@@ -1,5 +1,4 @@
 .selection-menu {
-    background-color: antiquewhite;
     display: grid;
     gap: clamp(var(--s), 5vw, var(--sm));
     grid-template-columns: auto;
@@ -7,52 +6,6 @@
     justify-content: stretch;
     height: 100%;
     width: 100%;
-}
-
-@media (max-width: 1200px) {
-    .selection-menu {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(5, auto);
-        grid-template-areas:
-            'profilePicture career'
-            'education hobbies'
-            'tools languages'
-            'addEntry addEntry'
-            'next next'
-        ;
-    }
-
-    .selection-menu>button:first-child {
-        grid-area: profilePicture;
-    }
-
-    .selection-menu>button:nth-child(2) {
-        grid-area: career;
-    }
-
-    .selection-menu>button:nth-child(3) {
-        grid-area: education;
-    }
-
-    .selection-menu>button:nth-child(4) {
-        grid-area: hobbies;
-    }
-
-    .selection-menu>button:nth-child(5) {
-        grid-area: tools;
-    }
-
-    .selection-menu>button:nth-child(6) {
-        grid-area: languages;
-    }
-
-    .selection-menu>button:nth-child(7) {
-        grid-area: addEntry;
-    }
-
-    .selection-menu>button:nth-child(8) {
-        grid-area: next;
-    }
 }
 
 .selection-toggler {
@@ -106,4 +59,54 @@
 
 .selection-menu>button {
     grid-column: 1/3;
+}
+
+.selection-menu>.add-entry {
+    justify-self: center;
+}
+
+@media (max-width: 1200px) {
+    .selection-menu {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, auto);
+        grid-template-areas:
+            'profilePicture career'
+            'education hobbies'
+            'tools languages'
+            'addEntry addEntry'
+            'next next'
+        ;
+    }
+
+    .selection-menu>button:first-child {
+        grid-area: profilePicture;
+    }
+
+    .selection-menu>button:nth-child(2) {
+        grid-area: career;
+    }
+
+    .selection-menu>button:nth-child(3) {
+        grid-area: education;
+    }
+
+    .selection-menu>button:nth-child(4) {
+        grid-area: hobbies;
+    }
+
+    .selection-menu>button:nth-child(5) {
+        grid-area: tools;
+    }
+
+    .selection-menu>button:nth-child(6) {
+        grid-area: languages;
+    }
+
+    .selection-menu>button:nth-child(7) {
+        grid-area: addEntry;
+    }
+
+    .selection-menu>button:nth-child(8) {
+        grid-area: next;
+    }
 }

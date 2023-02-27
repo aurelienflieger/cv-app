@@ -17,7 +17,7 @@ const MultipleEntries = ({
   updateDataHistoryAndDisableReviewMode,
   reviewMode,
 }) => {
-  const keys = generateUniqueKeys(5);
+  const [keys, setKeys] = useState(generateUniqueKeys(100));
   const [savedEntries, setSavedEntries] = useState(
     !!dataHistory && !!dataHistory[currentSectionName]
       ? dataHistory[currentSectionName]
@@ -25,28 +25,59 @@ const MultipleEntries = ({
   );
   const [entryBeingEdited, setEntryBeingEdited] = useState({});
   const [workingOnEntry, setWorkingOnEntry] = useState(false);
+
   const editExistingEntry = (submittedContents, keyOfEntryBeingEdited) => {
     setSavedEntries((savedEntries) => [
-      ...savedEntries.map((entry) => entry.key !== keyOfEntryBeingEdited),
+      ...savedEntries.filter((entry) => entry.key !== keyOfEntryBeingEdited),
       { ...submittedContents, key: keyOfEntryBeingEdited },
     ]);
+    setWorkingOnEntry(false);
+    setEntryBeingEdited({});
   };
+
   const saveNewEntry = (entryToSave) => {
     setSavedEntries([...savedEntries, entryToSave]);
+    setWorkingOnEntry(false);
   };
+
+  const getKey = () => {
+    const key = keys[0];
+    setKeys((remainingKeys) => [
+      ...remainingKeys.filter((_, index) => index !== 0),
+    ]);
+    return key;
+  };
+
   const prepareEntryForEdit = (keyOfEntryToEdit) => {
-    setEntryBeingEdited(keyOfEntryToEdit);
+    const entryToEdit = savedEntries.find(
+      (entry) => entry.key === keyOfEntryToEdit
+    );
+    setEntryBeingEdited(entryToEdit);
+    setWorkingOnEntry(true);
   };
+
   const removeEntry = (keyOfEntryToRemove) => {
-    const withoutEntryToRemove = savedEntries.map(
+    const withoutEntryToRemove = savedEntries.filter(
       (entry) => entry.key !== keyOfEntryToRemove
     );
     setSavedEntries(withoutEntryToRemove);
   };
 
+  const checkIfMaximumEntriesReached = () => {
+    const maxEntries = {
+      Career: 5,
+      Education: 2,
+      default: 3,
+    };
+
+    return maxEntries[currentSectionName]
+      ? savedEntries.length === maxEntries[currentSectionName]
+      : savedEntries.length === maxEntries["default"];
+  };
+
   return (
     <main
-      className={`multiple-entries ${currentSectionName}`}
+      className={`multiple-entries multiple-entries_${currentSectionName}`}
       name="multiple-entries"
     >
       {workingOnEntry && (
@@ -55,11 +86,15 @@ const MultipleEntries = ({
           editExistingEntry={editExistingEntry}
           entryBeingEdited={entryBeingEdited}
           saveNewEntry={saveNewEntry}
+          getKey={() => getKey()}
         />
       )}
 
-      {!workingOnEntry && savedEntries.length && (
-        <div className="entries-viewer" aria-label="entries-viewer">
+      {!workingOnEntry && !!savedEntries.length && (
+        <div
+          className={`entries-viewer entries-viewer_${currentSectionName}`}
+          aria-label="entries-viewer"
+        >
           {savedEntries.map((entry, index) => (
             <TemplateEntryBox
               currentSectionName={currentSectionName}
@@ -72,14 +107,22 @@ const MultipleEntries = ({
         </div>
       )}
 
-      {!workingOnEntry && <AddEntryButton customHandler={setWorkingOnEntry} />}
+      {!workingOnEntry && (
+        <AddEntryButton
+          isDisabled={checkIfMaximumEntriesReached()}
+          customHandler={setWorkingOnEntry}
+          text={"Add an entry"}
+        />
+      )}
 
       {reviewMode && !workingOnEntry && (
         <SaveReviewedSectionButton
-          updateDataHistoryAndDisableReviewMode={updateDataHistoryAndDisableReviewMode(
-            currentSectionName,
-            savedEntries
-          )}
+          updateDataHistoryAndDisableReviewMode={() =>
+            updateDataHistoryAndDisableReviewMode(
+              currentSectionName,
+              savedEntries
+            )
+          }
         />
       )}
 
@@ -87,10 +130,12 @@ const MultipleEntries = ({
         !workingOnEntry &&
         (savedEntries.length ? (
           <NextSectionButton
-            customHandler={updateDataHistoryAndDisplayNextPage(
-              currentSectionName,
-              savedEntries
-            )}
+            customHandler={() =>
+              updateDataHistoryAndDisplayNextPage(
+                currentSectionName,
+                savedEntries
+              )
+            }
           />
         ) : (
           <SkipSectionButton customHandler={() => displayNextPage()} />

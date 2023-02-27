@@ -16,6 +16,14 @@
     background-position: 0px -200px;
 }
 
+.header_ProfilePicture {
+    background-position: 0px -625px;
+}
+
+.header_Career {
+    background-position: 0px -450px;
+}
+
 @media (max-width: 500px) {
     .header {
         padding: var(--xs);
@@ -23,5 +31,13 @@
 
     .header_GeneralInformation {
         background-position: -100px -250px;
+    }
+
+    .header_ProfilePicture {
+        background-position: 0px -350px;
+    }
+
+    .header_Career {
+        background-position: -200px -530px;
     }
 }

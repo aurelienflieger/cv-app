@@ -9,6 +9,8 @@
 @import url('./Form/FormManager.css');
 @import url('./Form/GeneralInformation.css');
 @import url('./Form/SelectionMenu.css');
+@import url('./Form/ProfilePicture.css');
+@import url('./Form/MultipleEntries.css');
 @import url('./CV/CV.css');
 
 body {

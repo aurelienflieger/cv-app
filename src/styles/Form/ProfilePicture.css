@@ -1,0 +1,171 @@
+.profile-picture {
+    align-items: space-evenly;
+    display: grid;
+    gap: var(--m);
+    grid-template-rows: 1fr 1fr;
+    height: 100%;
+    justify-content: stretch;
+    width: 100%;
+}
+
+.picture-area {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--m);
+    min-height: 300px;
+}
+
+@media (max-width: 500px) {
+    .picture-area {
+        gap: var(--l);
+    }
+}
+
+.picture-area:hover {
+    background-color: var(--clr-grey-400);
+    border-radius: var(--br-rad-s);
+}
+
+.picture-area.cropped {
+    background: linear-gradient(var(--clr-grey-900), var(--clr-grey-200)), url('../../assets/ProfilePicture/confetti.png') repeat;
+    background-blend-mode: darken;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: 60%;
+    border-radius: var(--br-rad-s);
+}
+
+.picture-area.cropped:hover {
+    background-blend-mode: hard-light;
+}
+
+.uploaded-picture__wrapper {
+    position: relative;
+    z-index: 1;
+
+}
+
+.uploaded-picture__wrapper.uncropped::before {
+    background-image: url('../../assets/ProfilePicture/arrow-left.png');
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    content: '';
+    height: 100%;
+    position: absolute;
+    transform: translate(-70%, -10%);
+    width: 100%;
+}
+
+.uploaded-picture {
+    background-color: powderblue;
+    border: 5px solid var(--clr-accent);
+    border-radius: 50%;
+    display: flex;
+    height: 200px;
+    object-fit: cover;
+    width: 200px;
+}
+
+.uploaded-picture__wrapper.uncropped::after {
+    background-image: url('../../assets/ProfilePicture/arrow-right.png');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    content: '';
+    height: 100%;
+    transform: translate(60%, -150%);
+    position: absolute;
+    width: 100%;
+}
+
+.uploaded-picture__wrapper.cropped::before {
+    background-image: url('../../assets/ProfilePicture/crown.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    content: '';
+    height: 50%;
+    position: absolute;
+    transform: translate(-2%, -80%);
+    width: 100%;
+    z-index: -1;
+}
+
+.file-uploader {
+    opacity: 0;
+    position: absolute;
+}
+
+.file-uploader-label {
+    background-color: var(--clr-accent);
+    background-image: url('../../assets/ProfilePicture/upload.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    cursor: pointer;
+    min-height: 80px;
+    min-width: 80px;
+}
+
+.file-uploader-label:active {
+    transform: var(--scale-clicked);
+}
+
+.file-uploader-label:hover {
+    border: 5px solid var(--clr-btn-1);
+}
+
+.profile-picture__modal-background {
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+}
+
+.profile-picture__modal {
+    background-color: var(--clr-grey-800);
+    border: clamp(1px, 0.1vw, 3px) solid black;
+    display: flex;
+    flex-direction: column;
+    height: clamp(600px, 50vh, 800px);
+    justify-content: space-between;
+    width: clamp(350px, 70vw, 1200px);
+}
+
+.modal__title-area {
+    background-color: var(--clr-grey-500);
+    border: clamp(1px, 0.1vw, 3px) solid black;
+    display: flex;
+    align-items: center;
+    color: var(--clr-white);
+    font-family: 'Roboto-Light';
+    font-size: var(--fs-hook);
+    height: 100px;
+    padding: 1rem;
+}
+
+.crop__frame {
+    align-items: center;
+    align-self: center;
+    display: block;
+    height: 300px;
+    justify-content: center;
+    max-width: 100%;
+    outline: 20px ridge var(--clr-grey-300);
+    overflow: hidden;
+    width: 300px;
+}
+
+.confirm-crop:hover,
+.confirm-crop:active {
+    transform: scale(1);
+}

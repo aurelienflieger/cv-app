@@ -15,7 +15,7 @@ export const InputBox = ({ label, customChangeHandler, ...props }) => {
   });
 
   return (
-    <div className="input-box">
+    <div className={`input-box ${props.name}`}>
       <label className="input-box__label" htmlFor={props.name}>
         {label}
       </label>

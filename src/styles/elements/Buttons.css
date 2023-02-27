@@ -1,62 +1,95 @@
+.buttons-group {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--m);
+    justify-content: flex-start;
+}
+
 .button {
     color: var(--clr-white);
     font-size: var(--fs-input);
 }
 
 .button:active {
-    transform: scale(0.95);
+    transform: var(--scale-clicked);
 }
 
 .button:hover {
+    transform: var(--scale-hover);
     cursor: pointer;
 }
 
-.next-section {
-    background-color: var(--clr-btn-1);
+.next-section,
+.skip-section,
+.confirm-crop,
+.retry-button,
+.save-entry {
+    background-color: var(--clr-btn);
     border: none;
-    color: white;
     grid-column: 1/3;
     min-height: var(--height-btn-s);
     outline: none;
     width: 100%;
 }
 
+.retry-button,
+.save-entry {
+    background-color: var(--clr-accent);
+}
+
+.confirm-crop {
+    background-color: var(--clr-grey-400);
+}
+
 .add-entry {
     align-items: center;
     background-color: var(--clr-accent);
     border: none;
-    border-radius: var(--br-rad-round);
-    cursor: pointer;
+    border-radius: var(--br-rad-sm);
     display: grid;
-    font-size: var(--fs-add);
-    height: 100px;
-    justify-content: center;
-    justify-self: center;
-    outline: none;
-    position: relative;
-    place-content: center;
-    text-align: center;
-    width: 100px;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    max-height: var(--size-btn-add);
+    min-width: 200px;
+    padding-right: var(--s);
+    width: fit-content;
 }
 
-@media (min-width: 1200px) {
-    .add-entry {
-        z-index: 1;
+.add-entry__circle {
+    display: grid;
+    font-size: 4rem;
+    background-color: var(--clr-accent);
+    border-radius: var(--br-rad-round);
+    height: var(--size-btn-add);
+    place-content: center;
+    transform: var(--scale-hover);
+    width: var(--size-btn-add);
+}
+
+.add-entry__text {
+    align-items: center;
+    border-radius: var(--br-rad-xl);
+    display: grid;
+    font-size: clamp(14px, var(--fs-input), 18px);
+    height: var(--size-btn-add);
+    justify-content: center;
+    width: 100%;
+    z-index: 1;
+}
+
+@media (max-width: 500px) {
+    .add-entry__text {
+        display: none;
     }
 
-    .add-entry::after {
-        align-items: center;
-        background-color: var(--clr-accent);
-        border-radius: 80px;
-        content: 'Add a new entry';
-        display: grid;
-        font-size: calc(12px + 0.390625vw);
-        height: 80px;
-        justify-content: flex-end;
-        padding: 1rem;
-        position: absolute;
-        transform: translateX(20%);
-        width: 200px;
-        z-index: -1;
+    .add-entry__circle {
+        height: var(--size-btn-add_mobile);
+        width: var(--size-btn-add_mobile);
+    }
+
+    .add-entry {
+        min-width: fit-content;
+        padding-right: 0;
     }
 }

@@ -46,7 +46,7 @@ const SelectionMenu = ({
           key={keys.shift()}
         />
       ))}
-      <AddEntryButton customHandler={closeSelectionMenuAndDisplaySections} />
+      <AddEntryButton customHandler={closeSelectionMenuAndDisplaySections} text='Add these sections to your CV' />
       <NextSectionButton
         customHandler={displayReviewPage}
         text={`No, I'd just like to review my CV.`}

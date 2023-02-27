@@ -30,7 +30,9 @@ const FormManager = () => {
   const [generalInformationPage, setGeneralInformationPageDisplay] =
     useState(true);
   const [selectionPage, setSelectionPageDisplay] = useState(false);
+
   const [sectionPage, setSectionPageDisplay] = useState(false);
+
   const [reviewPage, setReviewPageDisplay] = useState(false);
   const [downloadPage, setDownloadPageDisplay] = useState(false);
 

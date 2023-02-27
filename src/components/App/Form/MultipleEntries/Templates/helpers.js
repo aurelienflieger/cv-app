@@ -9,6 +9,7 @@ const getFormikData = (
   isCurrentlyEditing
 ) => {
   const initialValues = () => {
+    console.log(entryBeingEdited)
     return isMainSection(currentSectionName)
       ? {
           status: isCurrentlyEditing ? entryBeingEdited.status : false,
@@ -76,26 +77,26 @@ const getFieldsContents = (currentSectionName) => {
             }.`,
           },
           establishment: {
-            label: `${currentSectionName === "Career" ? "Company" : "School"}.`,
+            label: `${currentSectionName === "Career" ? "Company" : "School"}`,
             placeholder: `${
               currentSectionName === "Career" ? "Microsoft" : "Harvard"
-            }.`,
+            }`,
           },
           context: {
-            label: `${currentSectionName === "Career" ? "Position" : "Field"}.`,
+            label: `${currentSectionName === "Career" ? "Position" : "Field"}`,
             placeholder: `${
               currentSectionName === "Career" ? "CEO" : "Economics"
-            }.`,
+            }`,
           },
           description: {
             label: `About your ${
               currentSectionName === "Career" ? "work" : "studies"
-            }.`,
+            }`,
             placeholder: `${
               currentSectionName === "Career"
                 ? "Your tasks & developed projects"
                 : "Your focus points & main takeaways"
-            }.`,
+            }`,
           },
         }
       : {

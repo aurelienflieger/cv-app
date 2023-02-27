@@ -9,7 +9,7 @@ const TemplateEntryFields = ({ currentSectionName, entryContents }) => {
             {entryContents.establishment}
           </span>
           <span className="entry-field" aria-label="from-to">
-            {entryContents.startDate} - {entryContents.endDate || "present"}
+            {entryContents.startDate} to {entryContents.endDate || "now"}
           </span>
         </>
       ) : (

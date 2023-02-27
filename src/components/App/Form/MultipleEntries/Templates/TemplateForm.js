@@ -1,5 +1,4 @@
 import { Formik } from "formik";
-import { generateUniqueKeys } from "../../shared-helpers";
 import { getFormikData } from "./helpers";
 import TemplateFormFields from "./TemplateFormFields";
 
@@ -7,9 +6,9 @@ const TemplateForm = ({
   currentSectionName,
   editExistingEntry,
   entryBeingEdited,
+  getKey,
   saveNewEntry,
 }) => {
-  const keys = generateUniqueKeys(5);
   const isCurrentlyEditing = !!Object.keys(entryBeingEdited).length;
   const customFormikData = getFormikData(
     currentSectionName,
@@ -25,7 +24,7 @@ const TemplateForm = ({
         if (isCurrentlyEditing) {
           editExistingEntry(submittedValues, entryBeingEdited.key);
         } else {
-          saveNewEntry({ ...submittedValues, key: keys.shift() });
+          saveNewEntry({ ...submittedValues, key: getKey() });
         }
         setSubmitting(false);
       }}
@@ -38,7 +37,11 @@ const TemplateForm = ({
           onSubmit={formikProps.handleSubmit}
         >
           <TemplateFormFields currentSectionName={currentSectionName} />
-          <button type="submit" className="save-entry" aria-label="save-entry">
+          <button
+            type="submit"
+            className="save-entry button"
+            aria-label="save-entry"
+          >
             Save this entry
           </button>
         </form>

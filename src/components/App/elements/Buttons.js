@@ -1,12 +1,13 @@
-const AddEntryButton = ({ customHandler }) => {
+const AddEntryButton = ({ customHandler, text, isDisabled }) => {
   return (
     <button
       type="button"
-      className="add-entry button"
+      className={`add-entry button ${isDisabled ? "disabled" : ""}`}
       aria-label="add-entry"
       onClick={customHandler}
     >
-      +
+      <span className="add-entry__circle">+</span>
+      <span className="add-entry__text">{text}</span>
     </button>
   );
 };
@@ -32,7 +33,7 @@ const SkipSectionButton = ({ customHandler, text }) => {
       aria-label="skip-section"
       onClick={customHandler}
     >
-      {text ? text : "I'd like to skip this section"}
+      {text ? text : "I'D LIKE TO SKIP THIS SECTION"}
     </button>
   );
 };

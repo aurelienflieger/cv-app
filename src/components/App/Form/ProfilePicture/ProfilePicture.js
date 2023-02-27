@@ -15,18 +15,25 @@ const ProfilePicture = ({
   reviewMode,
 }) => {
   const cropperRef = useRef(null);
-  const { isUploadMode, toggleUploadMode } = useState(true);
-  const { isCropMode, toggleCropMode } = useState(false);
-  const { uncroppedPicture, setUncroppedPicture } = useState("");
-  const { croppedPicture, setCroppedPicture } = useState("");
+  const [isUploadMode, toggleUploadMode] = useState(true);
+  const [isCropMode, toggleCropMode] = useState(false);
+  const [uncroppedPicture, setUncroppedPicture] = useState("");
+  const [croppedPicture, setCroppedPicture] = useState("");
+  const genericPicture = require(`../../../../assets/${currentSectionName}/generic-user.png`);
+
+  const resetProcess = () => {
+    setCroppedPicture("");
+    setUncroppedPicture("");
+    toggleUploadMode(true);
+  };
 
   const saveCroppedPicture = () => {
     const cropper = cropperRef.current.cropper;
     setCroppedPicture(cropper.getCroppedCanvas().toDataURL());
-    toggleCropMode(false);
   };
+
   const startPictureCrop = (event) => {
-    setUncroppedPicture(event.target.files[0]);
+    setUncroppedPicture(URL.createObjectURL(event.target.files[0]));
     toggleUploadMode(false);
     toggleCropMode(true);
   };
@@ -34,87 +41,105 @@ const ProfilePicture = ({
   return (
     <main className="profile-picture" aria-label="profile-picture">
       <div
-        className="profile-picture__frame"
-        aria-label="profile-picture__frame"
+        className={`picture-area ${
+          isUploadMode || isCropMode ? "uncropped" : "cropped"
+        }`}
       >
+        {!isCropMode && (
+          <div
+            className={`uploaded-picture__wrapper ${
+              isUploadMode || isCropMode ? "uncropped" : "cropped"
+            }`}
+          >
+            <img
+              className="uploaded-picture"
+              aria-label="uploaded-picture"
+              alt="uploaded"
+              src={croppedPicture || genericPicture}
+            />
+          </div>
+        )}
         {isUploadMode && (
-          <label htmlFor="file-uploader">
+          <>
+            <label
+              className="file-uploader-label"
+              aria-label="file-uploader-label"
+              htmlFor="file-uploader"
+            />
             <input
               type="file"
               className="file-uploader"
               aria-label="file-uploader"
+              id="file-uploader"
               accept="image/png, image/jpeg"
               onChange={startPictureCrop}
             />
-          </label>
+          </>
         )}
+      </div>
 
-        {isCropMode && (
-          <Cropper
-            src={uncroppedPicture}
-            style={{ height: 400, width: "100%" }}
-            initialAspectRatio={1 / 3}
-            crop={saveCroppedPicture}
-            ref={cropperRef}
-          />
-        )}
+      {isCropMode && (
+        <div className="profile-picture__modal-background">
+          <div className="profile-picture__modal">
+            <div className="modal__title-area">
+              <span className="modal__title">
+                Time to adjust your likeness!
+              </span>
+            </div>
+            <div className="crop__frame" aria-label="crop__frame">
+              <Cropper
+                className="cropper"
+                src={uncroppedPicture}
+                style={{ height: 300, width: 300 }}
+                crop={() => saveCroppedPicture()}
+                ref={cropperRef}
+                viewMode={3}
+              />
+            </div>
+            <button
+              className="confirm-crop button"
+              aria-label="confirm-crop"
+              onClick={() => toggleCropMode(false)}
+            >
+              I have finished cropping this picture.
+            </button>
+          </div>
+        </div>
+      )}
 
-        {!isUploadMode && !isCropMode && (
-          <img
-            className="cropped-picture"
-            aria-label="cropped-picture"
-            alt="Cropped"
-            src={croppedPicture}
-          />
-        )}
-
+      <div className="buttons-group" aria-label="buttons-group">
         {isUploadMode && (
           <SkipSectionButton displayNextPage={displayNextPage} />
         )}
 
-        {isCropMode && (
-          <button
-            className="confirm-crop"
-            aria-label="confirm-crop"
-            onClick={() => toggleCropMode(false)}
-          >
-            I have finished cropping this picture.
-          </button>
-        )}
-
-        <div className="buttons-group" aria-label="buttons-group">
-          {!isUploadMode &&
-            !isCropMode &&
-            (reviewMode ? (
-              <>
-                <SaveReviewedSectionButton
-                  updateDataHistoryAndDisableReviewMode={() =>
-                    updateDataHistoryAndDisableReviewMode(currentSectionName, croppedPicture)
-                  }
-                />
-              </>
-            ) : (
-              <>
-                <NextSectionButton
-                  onClick={() =>
-                    updateDataHistoryAndDisplayNextPage(
-                      currentSectionName,
-                      croppedPicture
-                    )
-                  }
-                />
-              </>
-            )) && (
-              <>
-                <button
-                  className="retry-button"
-                  onClick={() => toggleUploadMode(true)}
-                >
-                  I'd like to try again.
-                </button>
-              </>
-            )}
-        </div>
+        {!isUploadMode &&
+          !isCropMode &&
+          (reviewMode ? (
+            <>
+              <SaveReviewedSectionButton
+                updateDataHistoryAndDisableReviewMode={() =>
+                  updateDataHistoryAndDisableReviewMode(
+                    currentSectionName,
+                    croppedPicture
+                  )
+                }
+              />
+            </>
+          ) : (
+            <>
+              <button className="retry-button button" onClick={resetProcess}>
+                I'd like to try again.
+              </button>
+              <NextSectionButton
+                onClick={() =>
+                  updateDataHistoryAndDisplayNextPage(
+                    currentSectionName,
+                    croppedPicture
+                  )
+                }
+              />
+            </>
+          ))}
       </div>
     </main>
   );
