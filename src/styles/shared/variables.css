@@ -56,7 +56,7 @@
     --width-btn: 30px;
     /* scales */
     --scale-clicked: scale(0.95);
-    --scale-hover: scale(1.095);
+    --scale-hover: scale(1.05);
     /* transition */
     --trans: 120ms transform ease-in-out;
 }

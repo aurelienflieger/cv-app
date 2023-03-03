@@ -1,59 +1,52 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useField } from "formik";
 import {
-  toggleErrorStyle,
-  toggleSuccessStyle,
-  toggleFocusStyle,
+  useErrorStyling,
+  updateStylesOnBlur,
+  updateStylesOnFocus,
 } from "./handlers";
+import Error from "./Error";
 
 const TextBox = ({ label, maxCharacters, ...props }) => {
   const [field, meta] = useField(props);
-  const [didFocus, setFocus] = useState(false);
   const [lastTouched, setLastTouched] = useState("");
-  const handleFocus = () => setFocus(true);
+  const [didFocus, setFocus] = useState(false);
   const showFeedback = !!didFocus || meta.touched;
-
-  useEffect(() => {
-    meta.touched && meta.error && toggleErrorStyle(lastTouched);
-  });
+  const handleFocus = () => setFocus(true);
+  useErrorStyling(meta, lastTouched);
 
   return (
-    <div className={`textbox__wrapper ${props.name}`}>
-      <div className="label-feedback__wrapper">
-        <label className="textbox__label" htmlFor={props.name}>
+    <div
+      className={`textbox__box ${props.name} field`}
+      aria-label="textbox__box"
+    >
+      <div className="label-feedback__box" aria-label="label-feedback__box">
+        <label
+          className="textbox__label"
+          aria-label="textbox__label"
+          htmlFor={props.name}
+        >
           {label}
         </label>
         {showFeedback && (
-          <span className="feedback">
+          <span className="feedback" aria-label="feedback">
             {`${maxCharacters - field.value.length} characters left`}
           </span>
         )}
       </div>
       <input
         className="textbox__field"
-        aria-label={props.name}
+        aria-label="textbox__field"
         name={props.name}
-        onFocus={(event) => {
-          toggleFocusStyle(event);
-          handleFocus(event);
-        }}
-        onBlur={(event) => {
-          props.handleBlur && props.handleBlur(event);
-          field.onBlur(event);
-          toggleFocusStyle(event);
-          if (meta.touched && meta.error) toggleErrorStyle(event);
-          if (meta.touched && !meta.error) toggleSuccessStyle(event);
-          setLastTouched(event);
-        }}
-        onChange={(event) => {
-          field.onChange(event);
-        }}
+        onBlur={(event) =>
+          updateStylesOnBlur(event, field, meta, setLastTouched)
+        }
+        onChange={(event) => field.onChange(event)}
+        onFocus={(event) => updateStylesOnFocus(event, handleFocus)}
         value={field.value}
         {...props}
       />
-      {meta.touched && meta.error && (
-        <span className="error">{meta.error}</span>
-      )}
+      <Error meta={meta} />
     </div>
   );
 };

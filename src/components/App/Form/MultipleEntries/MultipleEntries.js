@@ -5,26 +5,32 @@ import {
   SaveReviewedSectionButton,
   SkipSectionButton,
 } from "../../elements/Buttons";
-import { generateUniqueKeys } from "../shared-helpers";
-import TemplateForm from "./Templates/TemplateForm";
 import TemplateEntryBox from "./Templates/TemplateEntryBox";
+import TemplateForm from "./Templates/TemplateForm";
 
 const MultipleEntries = ({
   currentSectionName,
   dataHistory,
-  displayNextPage,
-  updateDataHistoryAndDisplayNextPage,
-  updateDataHistoryAndDisableReviewMode,
+  eventHandlers,
   reviewMode,
 }) => {
-  const [keys, setKeys] = useState(generateUniqueKeys(100));
-  const [savedEntries, setSavedEntries] = useState(
-    !!dataHistory && !!dataHistory[currentSectionName]
-      ? dataHistory[currentSectionName]
-      : []
-  );
+  const { displayNextPage, handleSubmission } = eventHandlers;
   const [entryBeingEdited, setEntryBeingEdited] = useState({});
+  const [savedEntries, setSavedEntries] = useState(
+    !!dataHistory ? dataHistory : []
+  );
   const [workingOnEntry, setWorkingOnEntry] = useState(false);
+
+  const checkMaximumEntriesThreshold = () => {
+    const maxEntries = {
+      Career: 5,
+      default: 3,
+      Education: 2,
+    };
+    return maxEntries[currentSectionName]
+      ? savedEntries.length === maxEntries[currentSectionName]
+      : savedEntries.length === maxEntries["default"];
+  };
 
   const editExistingEntry = (submittedContents, keyOfEntryBeingEdited) => {
     setSavedEntries((savedEntries) => [
@@ -33,19 +39,6 @@ const MultipleEntries = ({
     ]);
     setWorkingOnEntry(false);
     setEntryBeingEdited({});
-  };
-
-  const saveNewEntry = (entryToSave) => {
-    setSavedEntries([...savedEntries, entryToSave]);
-    setWorkingOnEntry(false);
-  };
-
-  const getKey = () => {
-    const key = keys[0];
-    setKeys((remainingKeys) => [
-      ...remainingKeys.filter((_, index) => index !== 0),
-    ]);
-    return key;
   };
 
   const prepareEntryForEdit = (keyOfEntryToEdit) => {
@@ -63,21 +56,14 @@ const MultipleEntries = ({
     setSavedEntries(withoutEntryToRemove);
   };
 
-  const checkIfMaximumEntriesReached = () => {
-    const maxEntries = {
-      Career: 5,
-      Education: 2,
-      default: 3,
-    };
-
-    return maxEntries[currentSectionName]
-      ? savedEntries.length === maxEntries[currentSectionName]
-      : savedEntries.length === maxEntries["default"];
+  const saveNewEntry = (entryToSave) => {
+    setSavedEntries([...savedEntries, entryToSave]);
+    setWorkingOnEntry(false);
   };
 
   return (
     <main
-      className={`multiple-entries multiple-entries ${currentSectionName}`}
+      className={`multiple-entries ${currentSectionName}`}
       name="multiple-entries"
     >
       {workingOnEntry && (
@@ -86,30 +72,31 @@ const MultipleEntries = ({
           editExistingEntry={editExistingEntry}
           entryBeingEdited={entryBeingEdited}
           saveNewEntry={saveNewEntry}
-          getKey={() => getKey()}
         />
       )}
 
       {!workingOnEntry && !!savedEntries.length && (
         <div
-          className={`entries-viewer entries-viewer ${currentSectionName}`}
+          className={`entries-viewer ${currentSectionName}`}
           aria-label="entries-viewer"
         >
-          {savedEntries.map((entry, index) => (
-            <TemplateEntryBox
-              currentSectionName={currentSectionName}
-              entryContents={entry}
-              prepareEntryForEdit={() => prepareEntryForEdit(entry.key)}
-              removeEntry={() => removeEntry(entry.key)}
-              key={keys[index]}
-            />
-          ))}
+          {savedEntries.map((entry) => {
+            return (
+              <TemplateEntryBox
+                currentSectionName={currentSectionName}
+                entryContents={entry}
+                prepareEntryForEdit={() => prepareEntryForEdit(entry.key)}
+                removeEntry={() => removeEntry(entry.key)}
+                key={JSON.stringify(entry.key)}
+              />
+            );
+          })}
         </div>
       )}
 
       {!workingOnEntry && (
         <AddEntryButton
-          isDisabled={checkIfMaximumEntriesReached()}
+          isDisabled={checkMaximumEntriesThreshold()}
           customHandler={setWorkingOnEntry}
           text={"Add an entry"}
         />
@@ -117,12 +104,12 @@ const MultipleEntries = ({
 
       {reviewMode && !workingOnEntry && (
         <SaveReviewedSectionButton
-          updateDataHistoryAndDisableReviewMode={() =>
-            updateDataHistoryAndDisableReviewMode(
-              currentSectionName,
-              savedEntries
-            )
-          }
+          customHandler={() => {
+            handleSubmission(
+              { values: savedEntries, currentSectionName },
+              { isOptionalSection: true, isReviewMode: reviewMode }
+            );
+          }}
         />
       )}
 
@@ -130,15 +117,19 @@ const MultipleEntries = ({
         !workingOnEntry &&
         (savedEntries.length ? (
           <NextSectionButton
-            customHandler={() =>
-              updateDataHistoryAndDisplayNextPage(
-                currentSectionName,
-                savedEntries
-              )
-            }
+            customHandler={() => {
+              handleSubmission(
+                { values: savedEntries, currentSectionName },
+                { isOptionalSection: true, isReviewMode: reviewMode }
+              );
+            }}
           />
         ) : (
-          <SkipSectionButton customHandler={() => displayNextPage()} />
+          <SkipSectionButton
+            customHandler={() => {
+              displayNextPage("Optional");
+            }}
+          />
         ))}
     </main>
   );

@@ -1,25 +1,20 @@
-import "cropperjs/dist/cropper.css";
-import Cropper from "react-cropper";
 import { useRef, useState } from "react";
+import Cropper from "react-cropper";
 import {
   NextSectionButton,
   SaveReviewedSectionButton,
   SkipSectionButton,
 } from "../../elements/Buttons";
+import "cropperjs/dist/cropper.css";
 
-const ProfilePicture = ({
-  currentSectionName,
-  displayNextPage,
-  updateDataHistoryAndDisplayNextPage,
-  updateDataHistoryAndDisableReviewMode,
-  reviewMode,
-}) => {
+const Picture = ({ currentSectionName, eventHandlers, reviewMode }) => {
   const cropperRef = useRef(null);
   const [isUploadMode, toggleUploadMode] = useState(true);
   const [isCropMode, toggleCropMode] = useState(false);
   const [uncroppedPicture, setUncroppedPicture] = useState("");
   const [croppedPicture, setCroppedPicture] = useState("");
   const genericPicture = require(`../../../../assets/${currentSectionName}/generic-user.png`);
+  const { displayNextPage, handleSubmission } = eventHandlers;
 
   const resetProcess = () => {
     setCroppedPicture("");
@@ -39,7 +34,7 @@ const ProfilePicture = ({
   };
 
   return (
-    <main className="profile-picture" aria-label="profile-picture">
+    <main className="section picture" aria-label="profile-picture">
       <div
         className={`picture-area ${
           isUploadMode || isCropMode ? "uncropped" : "cropped"
@@ -79,8 +74,8 @@ const ProfilePicture = ({
       </div>
 
       {isCropMode && (
-        <div className="profile-picture__modal-background">
-          <div className="profile-picture__modal">
+        <div className="picture__modal-background">
+          <div className="picture__modal">
             <div className="modal__title-area">
               <span className="modal__title">
                 Time to adjust your likeness!
@@ -108,8 +103,10 @@ const ProfilePicture = ({
       )}
 
       <div className="buttons-group" aria-label="buttons-group">
-        {isUploadMode && (
-          <SkipSectionButton displayNextPage={displayNextPage} />
+        {isUploadMode && !reviewMode && (
+          <SkipSectionButton
+            customHandler={() => displayNextPage("Optional")}
+          />
         )}
 
         {!isUploadMode &&
@@ -117,24 +114,24 @@ const ProfilePicture = ({
           (reviewMode ? (
             <>
               <SaveReviewedSectionButton
-                updateDataHistoryAndDisableReviewMode={() =>
-                  updateDataHistoryAndDisableReviewMode(
-                    currentSectionName,
-                    croppedPicture
+                customHandler={() =>
+                  handleSubmission(
+                    { croppedPicture, currentSectionName },
+                    { isOptionalSection: true, isReviewMode: reviewMode }
                   )
                 }
               />
             </>
           ) : (
             <>
-              <button className="retry-button button" onClick={resetProcess}>
+              <button className="retry button" onClick={resetProcess}>
                 I'd like to try again.
               </button>
               <NextSectionButton
-                onClick={() =>
-                  updateDataHistoryAndDisplayNextPage(
-                    currentSectionName,
-                    croppedPicture
+                customHandler={() =>
+                  handleSubmission(
+                    { values: croppedPicture, currentSectionName },
+                    { isOptionalSection: true, isReviewMode: reviewMode }
                   )
                 }
               />
@@ -145,4 +142,4 @@ const ProfilePicture = ({
   );
 };
 
-export default ProfilePicture;
+export default Picture;

@@ -12,11 +12,11 @@
     width: clamp(36px, 3%, 48px);
 }
 
-.header.GeneralInformation {
+.header.Information {
     background-position: 0px -200px;
 }
 
-.header.ProfilePicture {
+.header.Picture {
     background-position: 0px -625px;
 }
 
@@ -24,20 +24,28 @@
     background-position: 0px -450px;
 }
 
+.header.Hobbies {
+    background-position: 0px -550px;
+}
+
 @media (max-width: 500px) {
     .header {
         padding: var(--xs);
     }
 
-    .header.GeneralInformation {
+    .header.Information {
         background-position: -100px -250px;
     }
 
-    .header.ProfilePicture {
+    .header.Picture {
         background-position: 0px -350px;
     }
 
     .header.Career {
         background-position: -200px -530px;
+    }
+
+    .header.Hobbies {
+        background-position: -200px -250px;
     }
 }

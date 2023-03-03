@@ -1,23 +1,35 @@
 import { useField } from "formik";
-import { generateUniqueKeys } from "../Form/shared-helpers";
 
-const Select = ({ label, props }) => {
+const Select = ({ label, ...props }) => {
   const [field, meta] = useField(props);
-  const keys = generateUniqueKeys(5);
-  const options = ["Basic", "Limited", "Professional", "Expert", "Master"];
+  const options = ["--", "Basic", "Limited", "Professional", "Expert", "Master"];
   return (
-    <div className="select-input-box">
-      <label htmlFor="select-input">{label}</label>
+    <div
+      className={`select-input__box ${props.name} field`}
+      aria-label="select-input__box"
+    >
+      <label
+        className="select-input__label"
+        aria-label="select-input__label"
+        htmlFor="select-input"
+      >
+        {label}
+      </label>
 
       <select
         className="select-input"
-        name="select-input"
+        aria-label="select-input"
         {...field}
         {...props}
       >
-        {options.map((option, index) => {
+        {options.map((option) => {
           return (
-            <option value={`skill-level-${index + 1}`} key={keys.shift()}>
+            <option
+              className="select-input__option"
+              aria-label="select-input__option"
+              value={option}
+              key={option}
+            >
               {option}
             </option>
           );
@@ -25,7 +37,9 @@ const Select = ({ label, props }) => {
       </select>
 
       {meta.touched && meta.error && (
-        <span className="error">{meta.error}</span>
+        <span className="error" aria-label="error">
+          {meta.error}
+        </span>
       )}
     </div>
   );

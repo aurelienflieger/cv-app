@@ -1,4 +1,4 @@
-import { isMainSection } from "./helpers";
+import { isMainSection } from "./customFormData";
 
 const TemplateEntryFields = ({ currentSectionName, entryContents }) => {
   return (
@@ -14,11 +14,11 @@ const TemplateEntryFields = ({ currentSectionName, entryContents }) => {
         </>
       ) : (
         <>
-          <span className="entry-field" aria-label="title">
-            {entryContents.title}
+          <span className="entry-field" aria-label="extra">
+            {entryContents.extra}
           </span>
-          <span className="entry-field" aria-label="skill">
-            {entryContents.skill}
+          <span className="entry-field" aria-label="proficiency">
+            {entryContents.proficiency}
           </span>
         </>
       )}

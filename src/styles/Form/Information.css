@@ -1,11 +1,11 @@
-.section.GeneralInformation {
+.section.Information {
     display: flex;
     justify-content: center;
     height: 100%;
     width: 100%;
 }
 
-.section.GeneralInformation>form {
+.section.Information>form {
     align-items: center;
     display: grid;
     gap: var(--s);
@@ -23,46 +23,46 @@
     width: 100%;
 }
 
-.section.GeneralInformation>form>div:first-child {
+.section.Information>form>div:first-child {
     grid-area: firstName;
 }
 
-.section.GeneralInformation>form>div:nth-child(2) {
+.section.Information>form>div:nth-child(2) {
     grid-area: lastName;
 }
 
-.section.GeneralInformation>form>div:nth-child(3) {
+.section.Information>form>div:nth-child(3) {
     grid-area: phone;
 }
 
-.section.GeneralInformation>form>div:nth-child(4) {
+.section.Information>form>div:nth-child(4) {
     grid-area: email;
 }
 
-.section.GeneralInformation>form>div:nth-child(5) {
+.section.Information>form>div:nth-child(5) {
     grid-area: birthdate;
 }
 
-.section.GeneralInformation>form>div:nth-child(6) {
+.section.Information>form>div:nth-child(6) {
     grid-area: workField;
 }
 
-.section.GeneralInformation>form>div:nth-child(7) {
+.section.Information>form>div:nth-child(7) {
     grid-area: home;
 }
 
-.section.GeneralInformation>form>div:nth-child(8) {
+.section.Information>form>div:nth-child(8) {
     grid-area: city;
 }
 
-.section.GeneralInformation>form>div:nth-child(9) {
+.section.Information>form>div:nth-child(9) {
     grid-area: country;
 }
 
-.section.GeneralInformation>form>div:nth-child(10) {
+.section.Information>form>div:nth-child(10) {
     grid-area: introduction;
 }
 
-.section.GeneralInformation>form>div:nth-child(11) {
+.section.Information>form>div:nth-child(11) {
     grid-area: nextSection;
 }

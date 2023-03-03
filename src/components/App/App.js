@@ -5,6 +5,7 @@ import "../../styles/App.css";
 
 const App = () => {
   const [isFirstLanding, toggleHomeScreen] = useState(true);
+
   return (
     <div className="App">
       {isFirstLanding ? (

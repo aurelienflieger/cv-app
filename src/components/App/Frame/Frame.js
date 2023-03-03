@@ -1,16 +1,12 @@
-import { useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "./Header/Header";
 import SideImage from "./SideImage/SideImage";
 
 const Frame = ({ currentSectionName, children }) => {
-  const [darkTheme, setDarkTheme] = useState(false);
   const sideImageDisplayed =
     currentSectionName !== "Review" && currentSectionName !== "Download";
   const isSmallScreen = useMediaQuery("(max-width:1200px)");
-  const backgroundImage = require(`../../../assets/backgrounds/${currentSectionName}_${
-    darkTheme ? "dark" : "light"
-  }.jpg`);
+  const backgroundImage = require(`../../../assets/backgrounds/${currentSectionName}_light.jpg`);
 
   return (
     <div className="frame" aria-label="frame">
@@ -20,7 +16,7 @@ const Frame = ({ currentSectionName, children }) => {
         isSmallScreen={isSmallScreen}
       />
       <div
-        className={`section-and-side section-and-side_${currentSectionName}`}
+        className={`section-and-side section-and-side ${currentSectionName}`}
       >
         {children}
         {!isSmallScreen && sideImageDisplayed && (

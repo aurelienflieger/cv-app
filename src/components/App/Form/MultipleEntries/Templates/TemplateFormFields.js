@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ConditionalCheckbox from "../../../elements/ConditionalCheckbox";
 import { InputBox, InputBoxWithDropdown } from "../../../elements/InputBox";
-import { getFieldsContents, isMainSection } from "./helpers";
+import { getFieldsContents, isMainSection } from "./customFormData";
 import TextBox from "../../../elements/TextBox";
 import Select from "../../../elements/Select";
 
@@ -48,7 +48,7 @@ const TemplateFormFields = ({ currentSectionName }) => {
         placeholder={contents.placeholder}
         contents={dropdown}
       />
-      <Select name="skill" label="Proficiency" />
+      <Select name="proficiency" label="Proficiency" />
     </>
   );
 };

@@ -1,10 +1,15 @@
-input[type='date']::placeholder {
-    font-size: var(--fs-sm);
+input[type='date'] {
+    font-size: clamp(12px, var(--fs-sm), 18px);
     opacity: 30%;
 }
 
+input[type='date']:focus {
+    opacity: 100%;
+}
+
 .input-box,
-.textbox__wrapper {
+.textbox__box,
+.select-input__box {
     background-color: var(--clr-white);
     border-radius: var(--br-rad-s);
     box-shadow: var(--box-shadow);
@@ -14,25 +19,28 @@ input[type='date']::placeholder {
     gap: var(--xs);
     height: 100%;
     min-width: var(--max-width-input);
-    min-height: var(--min-height-reg-input);
     padding: var(--xs);
     width: 100%;
 }
 
 .input-box__label,
-.textbox__label {
+.textbox__label,
+.select-input__label {
     color: var(--clr-grey-500);
     font-family: 'Roboto-Medium';
 }
 
 .input-box__field,
-.textbox__field {
+.textbox__field,
+.select-input {
+    background-color: transparent;
     border: none;
     font-size: var(--fs-sm);
 }
 
 .input-box__field:focus,
-.textbox__field:focus {
+.textbox__field:focus,
+.select-input:focus {
     outline: none;
 }
 
@@ -68,7 +76,7 @@ input[type='date']::placeholder {
     font-size: var(--fs-input);
 }
 
-.label-feedback__wrapper {
+.label-feedback__box{
     display: flex;
     justify-content: space-between;
     padding-right: var(--s);
@@ -85,14 +93,14 @@ input[type='date']::placeholder {
     font-family: 'Roboto-Light';
 }
 
-.correctInput {
+.field.correct {
     outline: var(--br-rad-xs) solid var(--clr-success);
 }
 
-.focusedInput {
+.field.focused {
     outline: var(--br-rad-xs) solid var(--clr-focus)
 }
 
-.incorrectInput {
+.field.incorrect {
     outline: var(--br-rad-xs) solid var(--clr-error)
 }

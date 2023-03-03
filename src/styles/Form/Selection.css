@@ -1,4 +1,4 @@
-.selection-menu {
+.section.Selection {
     display: grid;
     gap: clamp(var(--s), 5vw, var(--sm));
     grid-template-columns: auto;
@@ -42,16 +42,16 @@
     width: 50px;
 }
 
-.selection-menu>button {
+.section.Selection>button {
     grid-column: 1/3;
 }
 
-.selection-menu>.add-entry {
+.section.Selection>.add-entry {
     justify-self: center;
 }
 
 @media (max-width: 1200px) {
-    .selection-menu {
+    .section.Selection {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(5, auto);
         grid-template-areas:
@@ -63,35 +63,35 @@
         ;
     }
 
-    .selection-menu>button:first-child {
+    .section.Selection>button:first-child {
         grid-area: profilePicture;
     }
 
-    .selection-menu>button:nth-child(2) {
+    .section.Selection>button:nth-child(2) {
         grid-area: career;
     }
 
-    .selection-menu>button:nth-child(3) {
+    .section.Selection>button:nth-child(3) {
         grid-area: education;
     }
 
-    .selection-menu>button:nth-child(4) {
+    .section.Selection>button:nth-child(4) {
         grid-area: hobbies;
     }
 
-    .selection-menu>button:nth-child(5) {
+    .section.Selection>button:nth-child(5) {
         grid-area: tools;
     }
 
-    .selection-menu>button:nth-child(6) {
+    .section.Selection>button:nth-child(6) {
         grid-area: languages;
     }
 
-    .selection-menu>button:nth-child(7) {
+    .section.Selection>button:nth-child(7) {
         grid-area: addEntry;
     }
 
-    .selection-menu>button:nth-child(8) {
+    .section.Selection>button:nth-child(8) {
         grid-area: next;
     }
 }

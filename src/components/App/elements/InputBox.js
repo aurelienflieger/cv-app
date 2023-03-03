@@ -1,46 +1,42 @@
-import { useState, useEffect } from "react";
-import { useField } from "formik";
-import { generateUniqueKeys } from "../Form/shared-helpers";
+import { useState } from "react";
+import { useField, useFormikContext } from "formik";
 import {
-  toggleErrorStyle,
-  toggleSuccessStyle,
-  toggleFocusStyle,
+  useErrorStyling,
+  useFieldUpdater,
+  updateStylesOnBlur,
+  updateStylesOnFocus,
 } from "./handlers";
+import Error from "./Error";
 
 export const InputBox = ({ label, customChangeHandler, ...props }) => {
   const [field, meta] = useField(props);
   const [lastTouched, setLastTouched] = useState("");
-  useEffect(() => {
-    meta.touched && meta.error && toggleErrorStyle(lastTouched);
-  });
+  useErrorStyling(meta, lastTouched);
 
   return (
-    <div className={`input-box ${props.name}`}>
-      <label className="input-box__label" htmlFor={props.name}>
+    <div className={`input-box ${props.name} field`} aria-label="input-box">
+      <label
+        className="input-box__label"
+        aria-label="input-box__label"
+        htmlFor={props.name}
+      >
         {label}
       </label>
       <input
-        aria-label={props.name}
+        aria-label="input-box__field"
         className="input-box__field"
         value={field.value}
-        onBlur={(event) => {
-          props.handleBlur && props.handleBlur(event);
-          field.onBlur(event);
-          toggleFocusStyle(event);
-          if (meta.touched && meta.error) toggleErrorStyle(event);
-          if (meta.touched && !meta.error) toggleSuccessStyle(event);
-          setLastTouched(event);
-        }}
-        onFocus={toggleFocusStyle}
+        onBlur={(event) =>
+          updateStylesOnBlur(event, field, meta, setLastTouched)
+        }
         onChange={(event) => {
           customChangeHandler && customChangeHandler(event);
           field.onChange(event);
         }}
+        onFocus={updateStylesOnFocus}
         {...props}
       />
-      {meta.touched && meta.error && (
-        <span className="error">{meta.error}</span>
-      )}
+      <Error meta={meta} />
     </div>
   );
 };
@@ -49,30 +45,35 @@ export const InputBoxWithDropdown = ({ contents, ...props }) => {
   const [field] = useField(props);
   const [selection, setSelection] = useState(field.value);
   const [dropdown, showDropdown] = useState(false);
+  const { setFieldValue } = useFormikContext();
   const showDropdownMatch = (event) => {
     showDropdown(true);
     setSelection(event.target.value);
   };
-  const keys = generateUniqueKeys(300);
+
+  useFieldUpdater(selection, props.name, setFieldValue);
 
   return (
-    <div className="input-box-with-dropdown">
+    <div
+      className="input-box-with-dropdown field"
+      aria-label="input-box-with-dropdown"
+    >
       <InputBox
         type="text"
         name={props.name}
         label={props.label}
         placeholder={props.placeholder}
         customChangeHandler={showDropdownMatch}
-        value={selection}
       />
       {dropdown && (
-        <div className="dropdown">
+        <div className="dropdown" aria-label="dropdown">
           {contents.map((item) => {
             return (
               item.includes(selection) && (
                 <input
                   className="dropdown-item"
-                  key={keys.shift()}
+                  aria-label="dropdown-item"
+                  key={item}
                   type="button"
                   value={item}
                   onClick={(event) => {

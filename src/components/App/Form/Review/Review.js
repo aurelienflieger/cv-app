@@ -1,68 +1,76 @@
-import { createElement, React, useState } from "react";
+import { React, useState } from "react";
+import { getCurrentImage } from "../shared-helpers";
+import DefaultView from "./DefaultView";
 
-const Review = ({
-  formSectionNames,
-  CurrentSection,
-  dataHistory,
-  displayDownloadPage,
-  setCurrentSectionName,
-  updateDataHistory,
-}) => {
-  const [sectionToReview, setSectionToReview] = useState("");
-  const [reviewMode, setReviewMode] = useState(false);
-
-  const setAndDisplaySectionToReview = (event) => {
-    setSectionToReview(event.target.value);
-    setCurrentSectionName(sectionToReview);
-    setReviewMode(true);
-  };
-
-  const updateDataHistoryAndDisableReviewMode = (
-    currentSectionName,
-    dataToSave
-  ) => {
-    updateDataHistory(currentSectionName, dataToSave);
-    setReviewMode(false);
-    setSectionToReview("");
-  };
-
+const Review = ({ reviewSections, ReviewedComponent }) => {
+  const [selectedSection, setSelectedSection] = useState("");
+  const [currentImage, setCurrentImage] = useState({});
   return (
-    <main className="review" aria-label="review">
+    <main className="section review" aria-label="review">
       <aside className="side-navbar" aria-label="side-navbar">
         <ul className="side-navbar__list" aria-label="side-navbar__list">
-          {formSectionNames.map((sectionName) => {
+          {reviewSections.map((sectionName) => {
             return (
               <li
-                className="side-navbar__list-element"
+                className={`side-navbar__list-element ${
+                  selectedSection === sectionName ? "selected" : ""
+                }`}
                 aria-label="side-navbar__list-element"
+                onMouseOver={() => {
+                  setCurrentImage((prev) => ({
+                    ...prev,
+                    [sectionName]: getCurrentImage(sectionName, true),
+                  }));
+                }}
+                onMouseLeave={() => {
+                  if (selectedSection !== sectionName) {
+                    setCurrentImage((prev) => ({
+                      ...prev,
+                      [sectionName]: getCurrentImage(sectionName, false),
+                    }));
+                  }
+                }}
+                onClick={() => {
+                  setSelectedSection(sectionName);
+                  setCurrentImage({});
+                }}
+                key={sectionName}
               >
+                <img
+                  className="selection-toggler__image"
+                  aria-label="selection-toggler__image"
+                  alt="current-section"
+                  src={
+                    currentImage[sectionName] ||
+                    getCurrentImage(sectionName, !!(selectedSection === sectionName))
+                  }
+                />
                 <input
+                  className="list-element__section-name"
+                  aria-label="section-name"
                   type="submit"
                   value={sectionName}
-                  onClick={setAndDisplaySectionToReview}
                 />
               </li>
             );
           })}
         </ul>
       </aside>
-      <div className="reviewed-section" aria-label="reviewed-section">
-        {sectionToReview &&
-          createElement(CurrentSection(sectionToReview), {
-            currentSectionName: sectionToReview,
-            dataHistory: dataHistory,
-            updateDataHistoryAndDisableReviewMode:
-              updateDataHistoryAndDisableReviewMode,
-            reviewMode: reviewMode,
-          })}
+      <div className="reviewed-section-box" aria-label="reviewed-section">
+        {selectedSection ? (
+          <ReviewedComponent reviewedSection={selectedSection} key={selectedSection} />
+        ) : (
+          <div className="default-view">
+            <DefaultView />
+            <span className="default-text">
+              You have not selected any section for review yet.
+            </span>
+          </div>
+        )}
+        <button className="button download" aria-label="download" onClick={() => {}}>
+          Preview & download my CV
+        </button>
       </div>
-      <button
-        className="final-button"
-        aria-label="final-button"
-        onClick={displayDownloadPage}
-      >
-        Preview & download my CV
-      </button>
     </main>
   );
 };

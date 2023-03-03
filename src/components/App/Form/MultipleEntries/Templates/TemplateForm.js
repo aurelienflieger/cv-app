@@ -1,12 +1,11 @@
 import { Formik } from "formik";
-import { getFormikData } from "./helpers";
+import { getFormikData } from "./customFormData";
 import TemplateFormFields from "./TemplateFormFields";
 
 const TemplateForm = ({
   currentSectionName,
   editExistingEntry,
   entryBeingEdited,
-  getKey,
   saveNewEntry,
 }) => {
   const isCurrentlyEditing = !!Object.keys(entryBeingEdited).length;
@@ -24,7 +23,10 @@ const TemplateForm = ({
         if (isCurrentlyEditing) {
           editExistingEntry(submittedValues, entryBeingEdited.key);
         } else {
-          saveNewEntry({ ...submittedValues, key: getKey() });
+          saveNewEntry({
+            ...submittedValues,
+            key: JSON.stringify(submittedValues),
+          });
         }
         setSubmitting(false);
       }}

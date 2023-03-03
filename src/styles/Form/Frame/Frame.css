@@ -13,7 +13,8 @@
     width: 100%;
 }
 
-.section-and-side_Education {
+.section-and-side.Education,
+.section-and-side.Languages {
     flex-direction: row-reverse;
 }
 

@@ -7,10 +7,11 @@
 @import url('./Form/Frame/Header.css');
 @import url('./Form/Frame/SideImage.css');
 @import url('./Form/FormManager.css');
-@import url('./Form/GeneralInformation.css');
-@import url('./Form/SelectionMenu.css');
-@import url('./Form/ProfilePicture.css');
+@import url('./Form/Information.css');
+@import url('./Form/Selection.css');
+@import url('./Form/Picture.css');
 @import url('./Form/MultipleEntries.css');
+@import url('./Form/Review.css');
 @import url('./CV/CV.css');
 
 body {

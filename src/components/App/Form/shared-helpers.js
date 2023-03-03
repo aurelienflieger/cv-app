@@ -1,7 +1,8 @@
-export const generateUniqueKeys = (numberOfKeysRequested) => {
-  const baseKey = 0;
-  const keysCollection = Array(numberOfKeysRequested)
-    .fill("")
-    .map((__, index) => baseKey + index);
-  return keysCollection;
+export const getCurrentImage = (section, isSelected) => {
+  const image = require(`../../../assets/header-icons/${section}_${
+    isSelected ? "selected" : "default"
+  }.png`);
+  return image;
 };
+
+

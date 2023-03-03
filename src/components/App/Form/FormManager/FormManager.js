@@ -1,170 +1,156 @@
 import { createElement, React, useState } from "react";
 import Frame from "../../Frame/Frame";
-import CounterBox from "../../elements/CounterBox";
-import HookText from "../../elements/HookText";
-import GeneralInformation from "../GeneralInformation/GeneralInformation";
-import ProfilePicture from "../ProfilePicture/ProfilePicture";
+import HookAndCounter from "../../elements/HookAndCounter";
+import Information from "../Information/Information";
+import Picture from "../Picture/Picture";
 import MultipleEntries from "../MultipleEntries/MultipleEntries";
-import SelectionMenu from "../SelectionMenu/SelectionMenu";
+import Selection from "../Selection/Selection";
 import Review from "../Review/Review";
 import Download from "../Download/Download";
 
-const FormManager = () => {
-  const formSectionNames = [
-    "GeneralInformation",
-    "ProfilePicture",
+const sectionNames = {
+  mandatory: ["Information", "Selection", "Review", "Download"],
+  optional: ["Picture", "Career", "Education", "Tools", "Hobbies", "Languages"],
+  review: [
+    "Information",
+    "Picture",
     "Career",
     "Education",
-    "Hobbies",
     "Tools",
+    "Hobbies",
     "Languages",
-  ];
+  ],
+};
 
-  const [optionalSections, setOptionalSections] = useState([
-    ...formSectionNames.slice(1),
+const FormManager = () => {
+  const [currentSectionData, setCurrentSectionData] = useState({
+    name: "Information",
+    number: 1,
+  });
+  const [dataHistory, setDataHistory] = useState("");
+  const [mandatorySections, setMandatorySections] = useState([
+    ...sectionNames.mandatory,
   ]);
-  const [currentSectionName, setCurrentSectionName] =
-    useState("GeneralInformation");
-  const [currentNumber, setCurrentNumber] = useState(1);
-  const [dataHistory, setDataHistory] = useState({});
-  const [generalInformationPage, setGeneralInformationPageDisplay] =
-    useState(true);
-  const [selectionPage, setSelectionPageDisplay] = useState(false);
-  const [sectionPage, setSectionPageDisplay] = useState(false);
-  const [reviewPage, setReviewPageDisplay] = useState(false);
-  const [downloadPage, setDownloadPageDisplay] = useState(false);
+  const [optionalSections, setOptionalSections] = useState([
+    ...sectionNames.optional,
+  ]);
+  const [reviewSections] = useState([...sectionNames.review]);
 
-  const CurrentSection = (currentSectionName) => {
-    const sections = {
-      GeneralInformation,
-      ProfilePicture,
+  const ReviewedComponent = ({ reviewedSection }) => {
+    const props = {
+      currentSectionName: reviewedSection,
+      dataHistory: dataHistory[reviewedSection],
+      eventHandlers: {
+        displayNextPage,
+        handleSubmission,
+        setOptionalSections,
+      },
+      optionalSections: [...sectionNames.optional],
+      optionalSectionsToSelect: optionalSections,
+      reviewSections: reviewSections,
+      reviewMode: true,
     };
-    return sections[currentSectionName] || MultipleEntries;
-  };
 
-  const closeSelectionMenuAndDisplaySections = () => {
-    setSelectionPageDisplay(false);
-    setSectionPageDisplay(true);
-    setCurrentSectionName(optionalSections[0]);
-    setCurrentNumber((previousNumber) => previousNumber + 1);
-  };
-
-  const displayNextPage = () => {
-    if (!optionalSections.length) return displayReviewPage();
-    setOptionalSections((sections) => {
-      const withoutCurrentSection = sections.filter(
-        (section) => section !== section[0]
-      );
-      return [withoutCurrentSection];
-    });
-    setCurrentNumber((previousNumber) => previousNumber + 1);
-  };
-
-  const displayDownloadPage = () => {
-    setReviewPageDisplay(false);
-    setDownloadPageDisplay(true);
-    setCurrentSectionName("Download");
-    setCurrentNumber((previousNumber) => previousNumber + 1);
-  };
-
-  const displayReviewPage = () => {
-    setSectionPageDisplay(false);
-    setReviewPageDisplay(true);
-    setCurrentNumber((previousNumber) => previousNumber + 1);
-  };
-
-  const displaySelectionPage = () => {
-    setGeneralInformationPageDisplay(false);
-    setSelectionPageDisplay(true);
-    setCurrentNumber((previousNumber) => previousNumber + 1);
-  };
-
-  const updateDataHistory = (currentSectionName, dataToSave) => {
-    setDataHistory((history) => {
-      return { ...history, [currentSectionName]: dataToSave };
+    const specificSections = {
+      Information,
+      Selection,
+      Picture,
+      Review,
+      Download,
+    };
+    const currentTag = specificSections[reviewedSection] || MultipleEntries;
+    return createElement(currentTag, {
+      ...props,
     });
   };
 
-  const updateDataHistoryAndDisplayNextPage = (
-    currentSectionName,
-    dataToSave
-  ) => {
-    if (!optionalSections.length)
-      return updateDataHistoryAndDisplayReviewPage(
-        currentSectionName,
-        dataToSave
-      );
-    updateDataHistory(currentSectionName, dataToSave);
-    displayNextPage();
+  const CurrentComponent = () => {
+    const props = {
+      currentSectionName: currentSectionData.name,
+      eventHandlers: {
+        displayNextPage,
+        handleSubmission,
+        setOptionalSections,
+      },
+      optionalSections: [...sectionNames.optional],
+      optionalSectionsToSelect: optionalSections,
+      reviewSections: reviewSections,
+      ReviewedComponent: ReviewedComponent,
+    };
+
+    const specificSections = {
+      Information,
+      Selection,
+      Picture,
+      Review,
+      Download,
+    };
+    const currentTag =
+      specificSections[currentSectionData.name] || MultipleEntries;
+
+    return createElement(currentTag, {
+      ...props,
+    });
   };
 
-  const updateDataHistoryAndDisplayReviewPage = (
-    currentSectionName,
-    dataToSave
-  ) => {
-    updateDataHistory(currentSectionName, dataToSave);
-    displayReviewPage();
-    setCurrentSectionName("Review");
-  };
+  function displayNextPage(context) {
+    switch (context) {
+      case "Mandatory": {
+        setCurrentSectionData((prev) => {
+          return { name: mandatorySections[1], number: prev.number + 1 };
+        });
+        setMandatorySections((prev) => prev.slice(1));
+        break;
+      }
+      case "Selection": {
+        setMandatorySections((prev) => prev.slice(1));
+        setCurrentSectionData((prev) => {
+          return { name: optionalSections[0], number: prev.number + 1 };
+        });
+        break;
+      }
+      case "Optional": {
+        if (optionalSections.length === 1) {
+          setCurrentSectionData((prev) => {
+            return { name: mandatorySections[0], number: prev.number + 1 };
+          });
+          setMandatorySections((prev) => prev.slice(1));
+          return;
+        }
+        setCurrentSectionData((prev) => {
+          return { name: optionalSections[1], number: prev.number + 1 };
+        });
+        setOptionalSections((prev) => prev.slice(1));
+        break;
+      }
+      case "SkipSelectionOrReview": {
+        setCurrentSectionData((prev) => {
+          return { name: mandatorySections[1], number: prev.number + 1 };
+        });
+        setMandatorySections((prev) => prev.slice(1));
+        break;
+      }
+      default:
+        return "This context is unknown.";
+    }
+  }
 
-  const updateDataHistoryAndDisplaySelectionMenu = (
-    currentSectionName,
-    dataToSave
-  ) => {
-    updateDataHistory(currentSectionName, dataToSave);
-    displaySelectionPage();
-    setCurrentSectionName("SelectionMenu");
-  };
+  function handleSubmission(submitted, context) {
+    const { currentSectionName, values } = submitted;
+    const { isReviewMode, isOptionalSection } = context;
+    setDataHistory((history) => ({
+      ...history,
+      [currentSectionName]: values,
+    }));
+    if (isReviewMode) return;
+    displayNextPage(isOptionalSection ? "Optional" : "Mandatory");
+  }
 
   return (
-    <Frame currentSectionName={currentSectionName}>
-      <div className={`form-manager`} aria-label="form-manager">
-        <div className="hook-and-counter">
-          <HookText currentSectionName={currentSectionName} />
-          <CounterBox
-            currentNumber={currentNumber}
-            currentSectionName={currentSectionName}
-          />
-        </div>
-        {generalInformationPage && (
-          <GeneralInformation
-            updateDataHistoryAndDisplaySelectionMenu={
-              updateDataHistoryAndDisplaySelectionMenu
-            }
-          />
-        )}
-
-        {selectionPage && (
-          <SelectionMenu
-            closeSelectionMenuAndDisplaySections={
-              closeSelectionMenuAndDisplaySections
-            }
-            immutableSectionsForMapping={[...formSectionNames.slice(1)]}
-            optionalSections={optionalSections}
-            setOptionalSections={setOptionalSections}
-          />
-        )}
-
-        {sectionPage &&
-          createElement(CurrentSection(currentSectionName), {
-            currentSectionName: currentSectionName,
-            displayNextPage: displayNextPage,
-            updateDataHistoryAndDisplayNextPage:
-              updateDataHistoryAndDisplayNextPage,
-          })}
-
-        {reviewPage && (
-          <Review
-            formSectionNames={formSectionNames}
-            dataHistory={dataHistory}
-            CurrentSection={CurrentSection}
-            displayDownloadPage={displayDownloadPage}
-            setCurrentSectionName={setCurrentSectionName}
-            updateDataHistory={updateDataHistory}
-          />
-        )}
-
-        {downloadPage && <Download />}
+    <Frame currentSectionName={currentSectionData.name}>
+      <div className="form-manager" aria-label="form-manager">
+        <HookAndCounter currentData={currentSectionData} />
+        <CurrentComponent key={currentSectionData.name} />
       </div>
     </Frame>
   );
