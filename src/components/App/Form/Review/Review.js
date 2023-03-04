@@ -2,9 +2,11 @@ import { React, useState } from "react";
 import { getCurrentImage } from "../shared-helpers";
 import DefaultView from "./DefaultView";
 
-const Review = ({ reviewSections, ReviewedComponent }) => {
+const Review = ({ eventHandlers, reviewSections, DynamicComponent }) => {
   const [selectedSection, setSelectedSection] = useState("");
   const [currentImage, setCurrentImage] = useState({});
+  const { displayNextPage } = eventHandlers;
+
   return (
     <main className="section review" aria-label="review">
       <aside className="side-navbar" aria-label="side-navbar">
@@ -42,7 +44,10 @@ const Review = ({ reviewSections, ReviewedComponent }) => {
                   alt="current-section"
                   src={
                     currentImage[sectionName] ||
-                    getCurrentImage(sectionName, !!(selectedSection === sectionName))
+                    getCurrentImage(
+                      sectionName,
+                      !!(selectedSection === sectionName)
+                    )
                   }
                 />
                 <input
@@ -58,7 +63,11 @@ const Review = ({ reviewSections, ReviewedComponent }) => {
       </aside>
       <div className="reviewed-section-box" aria-label="reviewed-section">
         {selectedSection ? (
-          <ReviewedComponent reviewedSection={selectedSection} key={selectedSection} />
+          <DynamicComponent
+            additionalProps={{ reviewMode: true }}
+            sectionName={selectedSection}
+            key={selectedSection}
+          />
         ) : (
           <div className="default-view">
             <DefaultView />
@@ -67,7 +76,13 @@ const Review = ({ reviewSections, ReviewedComponent }) => {
             </span>
           </div>
         )}
-        <button className="button download" aria-label="download" onClick={() => {}}>
+        <button
+          className="button download"
+          aria-label="download"
+          onClick={() => {
+            displayNextPage("toMandatoryPage", 1);
+          }}
+        >
           Preview & download my CV
         </button>
       </div>

@@ -38,11 +38,11 @@ const Selection = ({
         />
       ))}
       <AddEntryButton
-        customHandler={() => displayNextPage("Selection")}
+        customHandler={() => displayNextPage("toFirstOptionalPage")}
         text="Add these sections to your CV"
       />
       <NextSectionButton
-        customHandler={() => displayNextPage("SkipSelectionOrReview")}
+        customHandler={() => displayNextPage("toMandatoryPage", 1)}
         text={`No, I'd just like to review my CV.`}
       />
     </main>

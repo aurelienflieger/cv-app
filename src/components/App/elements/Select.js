@@ -3,6 +3,7 @@ import { useField } from "formik";
 const Select = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   const options = ["--", "Basic", "Limited", "Professional", "Expert", "Master"];
+
   return (
     <div
       className={`select-input__box ${props.name} field`}
@@ -22,7 +23,7 @@ const Select = ({ label, ...props }) => {
         {...field}
         {...props}
       >
-        {options.map((option) => {
+        {options.map((option, index) => {
           return (
             <option
               className="select-input__option"

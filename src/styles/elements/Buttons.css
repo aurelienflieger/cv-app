@@ -28,6 +28,7 @@
 .retry.button,
 .save-entry.button,
 .download.button,
+.trigger-download,
 .save-reviewed-section.button {
     background-color: var(--clr-btn);
     border: none;

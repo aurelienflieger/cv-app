@@ -1,13 +1,13 @@
 import React from "react";
 
-const Header = ({ backgroundImage, currentSectionName, isSmallScreen }) => {
+const Header = ({ backgroundImage, currentSectionName, isMidScreen }) => {
   const iconSrc = require(`../../../../assets/header-icons/${currentSectionName}_default.png`);
 
   return (
     <header
-      className={`header header ${currentSectionName}`}
+      className={`header ${currentSectionName}`}
       style={{
-        backgroundImage: isSmallScreen ? `url(${backgroundImage})` : null,
+        backgroundImage: isMidScreen ? `url(${backgroundImage})` : null,
       }}
     >
       <img className="header-icon" alt="header icon" src={iconSrc} />

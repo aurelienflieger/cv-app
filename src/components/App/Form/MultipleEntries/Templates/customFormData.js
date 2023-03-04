@@ -70,7 +70,7 @@ const getFieldsContents = (currentSectionName) => {
     return isMainSection(currentSectionName)
       ? {
           status: {
-            label: `I am still ${
+            label: `I am no longer ${
               currentSectionName === "Career"
                 ? "working for this company"
                 : "studying at this school"

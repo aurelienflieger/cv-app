@@ -12,10 +12,15 @@
 @import url('./Form/Picture.css');
 @import url('./Form/MultipleEntries.css');
 @import url('./Form/Review.css');
+@import url('./Form/Download.css');
 @import url('./CV/CV.css');
 
 body {
     background-color: var(--clr-grey-100);
+}
+
+body.no-overflow {
+    overflow: hidden;
 }
 
 .App {

@@ -59,6 +59,7 @@
 
 @media (max-width: 500px) {
     .form-manager {
-        gap: var(--m);
+        gap: var(--xs);
+        padding: var(--xs);
     }
 }

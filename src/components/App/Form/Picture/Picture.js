@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Cropper from "react-cropper";
 import {
   NextSectionButton,
@@ -21,6 +21,8 @@ const Picture = ({ currentSectionName, eventHandlers, reviewMode }) => {
     setUncroppedPicture("");
     toggleUploadMode(true);
   };
+
+  useEffect(() => console.log(croppedPicture))
 
   const saveCroppedPicture = () => {
     const cropper = cropperRef.current.cropper;
@@ -105,7 +107,7 @@ const Picture = ({ currentSectionName, eventHandlers, reviewMode }) => {
       <div className="buttons-group" aria-label="buttons-group">
         {isUploadMode && !reviewMode && (
           <SkipSectionButton
-            customHandler={() => displayNextPage("Optional")}
+            customHandler={() => displayNextPage("toNextOptionalPage")}
           />
         )}
 

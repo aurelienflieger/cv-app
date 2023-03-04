@@ -5,4 +5,6 @@ export const getCurrentImage = (section, isSelected) => {
   return image;
 };
 
-
+export const localize = (date) => {
+  return new Date(date).toLocaleDateString();
+};

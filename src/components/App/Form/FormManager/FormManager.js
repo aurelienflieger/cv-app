@@ -1,4 +1,4 @@
-import { createElement, React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import Frame from "../../Frame/Frame";
 import HookAndCounter from "../../elements/HookAndCounter";
 import Information from "../Information/Information";
@@ -22,7 +22,7 @@ const sectionNames = {
   ],
 };
 
-const FormManager = () => {
+const FormManager = ({ isSmallScreen }) => {
   const [currentSectionData, setCurrentSectionData] = useState({
     name: "Information",
     number: 1,
@@ -35,20 +35,23 @@ const FormManager = () => {
     ...sectionNames.optional,
   ]);
   const [reviewSections] = useState([...sectionNames.review]);
+  useEffect(() => console.log(mandatorySections));
 
-  const ReviewedComponent = ({ reviewedSection }) => {
+  function DynamicComponent({ sectionName, additionalProps }) {
     const props = {
-      currentSectionName: reviewedSection,
-      dataHistory: dataHistory[reviewedSection],
+      currentSectionName: sectionName,
+      dataHistory: dataHistory,
+      sectionHistory: dataHistory[sectionName],
       eventHandlers: {
         displayNextPage,
         handleSubmission,
         setOptionalSections,
       },
+      isSmallScreen: isSmallScreen,
       optionalSections: [...sectionNames.optional],
       optionalSectionsToSelect: optionalSections,
       reviewSections: reviewSections,
-      reviewMode: true,
+      ...additionalProps,
     };
 
     const specificSections = {
@@ -58,81 +61,39 @@ const FormManager = () => {
       Review,
       Download,
     };
-    const currentTag = specificSections[reviewedSection] || MultipleEntries;
-    return createElement(currentTag, {
-      ...props,
-    });
-  };
+    const CurrentTag = specificSections[sectionName] || MultipleEntries;
+    return <CurrentTag {...props} />;
+  }
 
-  const CurrentComponent = () => {
-    const props = {
-      currentSectionName: currentSectionData.name,
-      eventHandlers: {
-        displayNextPage,
-        handleSubmission,
-        setOptionalSections,
-      },
-      optionalSections: [...sectionNames.optional],
-      optionalSectionsToSelect: optionalSections,
-      reviewSections: reviewSections,
-      ReviewedComponent: ReviewedComponent,
+  function displayNextPage(context, optionalIndex) {
+    const action = {
+      toMandatoryPage: () => displayNextMandatoryPage(optionalIndex),
+      toFirstOptionalPage: () => displayFirstOptionalPage(),
+      toNextOptionalPage: () => displayNextOptionalPage(),
     };
+    return action[context]();
+  }
 
-    const specificSections = {
-      Information,
-      Selection,
-      Picture,
-      Review,
-      Download,
-    };
-    const currentTag =
-      specificSections[currentSectionData.name] || MultipleEntries;
-
-    return createElement(currentTag, {
-      ...props,
+  function displayFirstOptionalPage() {
+    setMandatorySections((prev) => prev.slice(1));
+    setCurrentSectionData((prev) => {
+      return { name: optionalSections[0], number: prev.number + 1 };
     });
-  };
+  }
 
-  function displayNextPage(context) {
-    switch (context) {
-      case "Mandatory": {
-        setCurrentSectionData((prev) => {
-          return { name: mandatorySections[1], number: prev.number + 1 };
-        });
-        setMandatorySections((prev) => prev.slice(1));
-        break;
-      }
-      case "Selection": {
-        setMandatorySections((prev) => prev.slice(1));
-        setCurrentSectionData((prev) => {
-          return { name: optionalSections[0], number: prev.number + 1 };
-        });
-        break;
-      }
-      case "Optional": {
-        if (optionalSections.length === 1) {
-          setCurrentSectionData((prev) => {
-            return { name: mandatorySections[0], number: prev.number + 1 };
-          });
-          setMandatorySections((prev) => prev.slice(1));
-          return;
-        }
-        setCurrentSectionData((prev) => {
-          return { name: optionalSections[1], number: prev.number + 1 };
-        });
-        setOptionalSections((prev) => prev.slice(1));
-        break;
-      }
-      case "SkipSelectionOrReview": {
-        setCurrentSectionData((prev) => {
-          return { name: mandatorySections[1], number: prev.number + 1 };
-        });
-        setMandatorySections((prev) => prev.slice(1));
-        break;
-      }
-      default:
-        return "This context is unknown.";
-    }
+  function displayNextMandatoryPage(index) {
+    setCurrentSectionData((prev) => {
+      return { name: mandatorySections[index], number: prev.number + 1 };
+    });
+    setMandatorySections((prev) => prev.slice(1));
+  }
+
+  function displayNextOptionalPage() {
+    if (optionalSections.length === 1) return displayNextMandatoryPage(0);
+    setCurrentSectionData((prev) => {
+      return { name: optionalSections[1], number: prev.number + 1 };
+    });
+    setOptionalSections((prev) => prev.slice(1));
   }
 
   function handleSubmission(submitted, context) {
@@ -143,14 +104,23 @@ const FormManager = () => {
       [currentSectionName]: values,
     }));
     if (isReviewMode) return;
-    displayNextPage(isOptionalSection ? "Optional" : "Mandatory");
+    displayNextPage(
+      isOptionalSection ? "toNextOptionalPage" : "toMandatoryPage",
+      1
+    );
   }
 
   return (
-    <Frame currentSectionName={currentSectionData.name}>
+    <Frame
+      currentSectionName={currentSectionData.name}
+      isSmallScreen={isSmallScreen}
+    >
       <div className="form-manager" aria-label="form-manager">
         <HookAndCounter currentData={currentSectionData} />
-        <CurrentComponent key={currentSectionData.name} />
+        <DynamicComponent
+          additionalProps={{ DynamicComponent }}
+          sectionName={currentSectionData.name}
+        />
       </div>
     </Frame>
   );

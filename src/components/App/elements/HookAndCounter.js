@@ -7,6 +7,10 @@ const customData = {
     counter: "WORK EXPERIENCE",
     hook: "It's time to tackle your career so far.",
   },
+  Selection: {
+    counter: "OPTIONAL SECTIONS",
+    hook: "Which piece of information would you like to add?",
+  },
   Education: {
     counter: "EDUCATION",
     hook: "We'll go over your studies together.",
@@ -27,13 +31,13 @@ const customData = {
     counter: "LANGUAGES",
     hook: "Tell us about your mother tongue and any foreign one.",
   },
-  Selection: {
-    counter: "OPTIONAL SECTIONS",
-    hook: "Which piece of information would you like to add?",
-  },
   Review: {
     counter: "CONTENTS REVIEW",
     hook: "Is there anything you'd like to change?",
+  },
+  Download: {
+    counter: "CV DOWNLOAD",
+    hook: "Your CV is ready to be sent to your future employer.",
   },
 };
 

@@ -18,12 +18,6 @@
 
 }
 
-@media (max-width: 500px) {
-    .picture-area {
-        gap: var(--l);
-    }
-}
-
 .picture-area:hover {
     background-color: var(--clr-grey-400);
     border-radius: var(--br-rad-s);
@@ -173,4 +167,10 @@
 .confirm-crop:hover,
 .confirm-crop:active {
     transform: scale(1);
+}
+
+@media (max-width: 500px) {
+    .picture-area {
+        gap: var(--l);
+    }
 }

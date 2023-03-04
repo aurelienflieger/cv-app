@@ -1,4 +1,37 @@
 import React from "react";
+import { localize } from "../Form/shared-helpers";
+
+const Entry = ({ savedEntry }) => {
+  return (
+    <div className="CV__entry-group" key={JSON.stringify(savedEntry)}>
+      <p className="CV__entry-title">
+        {`${savedEntry.context} @ ${savedEntry.establishment}`}
+      </p>
+      <p className="CV__entry-date">{`${localize(
+        savedEntry.startDate
+      )} to ${localize(savedEntry.endDate)}`}</p>
+      <p className="CV__entry-text">{`${savedEntry.description}`}</p>
+    </div>
+  );
+};
+
+const Section = ({ sectionName, dataHistory }) => {
+  return (
+    <div className="CV__left-pane__section" key={JSON.stringify(sectionName)}>
+      <h3 className="CV__section-title">{sectionName}</h3>
+      <div className="CV__entry-and-bar-group">
+        <span className="CV__bar" />
+        <div className="CV__entries">
+          {!!dataHistory &&
+            !!dataHistory[sectionName] &&
+            dataHistory[sectionName].map((savedEntry) => (
+              <Entry savedEntry={savedEntry} key={JSON.stringify(savedEntry)} />
+            ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const LocalizationIcon = () => {
   return (
@@ -21,24 +54,27 @@ const LocalizationIcon = () => {
   );
 };
 
-const EyeCatcher = () => {
-  const defaultPicture = require("../../../assets/cv/default-user.jpg");
+const EyeCatcher = ({ dataHistory }) => {
+  const { Information, Picture } = dataHistory;
+  const defaultPicture = require("../../../assets/Picture/generic-user.png");
   return (
     <div className="CV__eye-catcher">
       <img
         alt="default"
-        className="CV__eye-catcher__photo"
-        src={defaultPicture}
+        className="CV__eye-catcher__photo shadowed"
+        src={Picture || defaultPicture}
       />
       <div className="CV__eye-catcher__right-group">
-        <h1 className="CV__eye-catcher__name">Horst McJumbo</h1>
+        <h1 className="CV__eye-catcher__name">
+          {`${Information.firstName} ${Information.lastName}`}
+        </h1>
         <span className="CV__eye-catcher__work-field">
-          User Experience Designer
+          {Information.workField}
         </span>
         <div className="CV__eye-catcher__localization">
           <LocalizationIcon />
-          <span className="CV__eye-catcher__localization__">
-            London, United Kingdom
+          <span className="CV__eye-catcher__localization-text">
+            {`${Information.city}, ${Information.country}`}
           </span>
         </div>
       </div>
@@ -46,108 +82,34 @@ const EyeCatcher = () => {
   );
 };
 
-const Profile = () => {
+const Profile = ({ dataHistory }) => {
+  const { Information } = dataHistory;
   return (
     <div className="CV__profile CV__left-pane__section">
       <h3 className="CV__section-title">Profile</h3>
       <div className="CV__entry-and-bar-group">
         <span className="CV__bar" />
-        <p className="CV__entry-text">
-          I am a digital native with 7+ years of multi-disciplanary agency
-          experience in digital creativity. My belief is that good brands are
-          defined by the experience of their clients. My passion is to make
-          those experiences better and more beautiful.
-        </p>
+        <p className="CV__entry-text">{Information.introduction}</p>
       </div>
     </div>
   );
 };
 
-const Career = () => {
-  return (
-    <div className="CV__career CV__left-pane__section">
-      <h3 className="CV__section-title">Career</h3>
-      <div className="CV__entry-and-bar-group">
-        <span className="CV__bar" />
-        <div className="CV__entries">
-          <div className="CV__entry-group">
-            <p className="CV__entry-title">Team Lead Digital @ Strangelove</p>
-            <p className="CV__entry-date">12/2013 - Present</p>
-            <p className="CV__entry-text">
-              Coordinating a team of 6, implementing and developing design
-              standards, consulting core clients and scoping projects
-            </p>
-          </div>
-          <div className="CV__entry-group">
-            <p className="CV__entry-title">Team Lead Digital @ Strangelove</p>
-            <p className="CV__entry-date">12/2013 - Present</p>
-            <p className="CV__entry-text">
-              Coordinating a team of 6, implementing and developing design
-              standards, consulting core clients and scoping projects
-            </p>
-          </div>
-          <div className="CV__entry-group">
-            <p className="CV__entry-title">Team Lead Digital @ Strangelove</p>
-            <p className="CV__entry-date">12/2013 - Present</p>
-            <p className="CV__entry-text">
-              Coordinating a team of 6, implementing and developing design
-              standards, consulting core clients and scoping projects
-            </p>
-          </div>
-          <div className="CV__entry-group">
-            <p className="CV__entry-title">Team Lead Digital @ Strangelove</p>
-            <p className="CV__entry-date">12/2013 - Present</p>
-            <p className="CV__entry-text">
-              Coordinating a team of 6, implementing and developing design
-              standards, consulting core clients and scoping projects
-            </p>
-          </div>
-          <div className="CV__entry-group">
-            <p className="CV__entry-title">Team Lead Digital @ Strangelove</p>
-            <p className="CV__entry-date">12/2013 - Present</p>
-            <p className="CV__entry-text">
-              Coordinating a team of 6, implementing and developing design
-              standards, consulting core clients and scoping projects
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+const Career = ({ dataHistory }) => {
+  return <Section dataHistory={dataHistory} sectionName="Career" />;
 };
 
-const Education = () => {
-  return (
-    <div className="CV__education CV__left-pane__section">
-      <h3 className="CV__section-title">Education</h3>
-      <div className="CV__entry-and-bar-group">
-        <span className="CV__bar" />
-        <div className="CV__entries">
-          <div className="CV__entry-group">
-            <p className="CV__entry-title">BA, Communication & Media Design</p>
-            <p className="CV__entry-date">2008 - 2011</p>
-            <p className="CV__entry-text">
-              University of Applied Sciences Amsterdam
-            </p>
-          </div>
-          <div className="CV__entry-group">
-            <p className="CV__entry-title">Multimedia Design</p>
-            <p className="CV__entry-date">2003 - 2007 </p>
-            <p className="CV__entry-text">Graphic Lyceum Amsterdam</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+const Education = ({ dataHistory }) => {
+  return <Section dataHistory={dataHistory} sectionName="Education" />;
 };
 
-const LeftPane = () => {
+const LeftPane = ({ dataHistory }) => {
   return (
     <div className="CV__left-pane">
-      <EyeCatcher />
-      <Profile />
-      <Career />
-      <Education />
+      <EyeCatcher dataHistory={dataHistory} />
+      <Profile dataHistory={dataHistory} />
+      <Career dataHistory={dataHistory} />
+      <Education dataHistory={dataHistory} />
     </div>
   );
 };

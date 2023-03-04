@@ -11,7 +11,7 @@ const App = () => {
       {isFirstLanding ? (
         <HomeScreen toggleHomeScreen={toggleHomeScreen} />
       ) : (
-        <FormManager />
+        <FormManager/>
       )}
     </div>
   );

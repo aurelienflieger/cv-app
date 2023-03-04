@@ -5,6 +5,6 @@ import ReactDOM from "react-dom/client";
 const documentRoot = ReactDOM.createRoot(document.querySelector(".root"));
 documentRoot.render(
   <React.StrictMode>
-    <App />
+   <App/>
   </React.StrictMode>
 );

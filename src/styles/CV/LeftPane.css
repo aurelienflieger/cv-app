@@ -1,13 +1,14 @@
 .CV__left-pane {
     display: grid;
-    gap: var(--gap-sm);
+    gap: var(--cv_gap-sm);
     grid-column: 1;
+    overflow: hidden;
 }
 
 .CV__left-pane__section {
     display: flex;
     flex-direction: column;
-    gap: var(--gap-sm);
+    gap: var(--cv_gap-sm);
     justify-content: flex-start;
 }
 
@@ -17,19 +18,26 @@
     grid-row: 1;
     justify-content: flex-start;
     align-items: center;
-    gap: var(--gap-m);
+    gap: var(--cv_gap-m);
 }
 
 .CV__eye-catcher__photo {
     width: 96px;
     height: auto;
     border-radius: 50%;
+}
+
+.shadowed {
     box-shadow: 1px 1px 15px -7px #000000;
 }
 
 .CV__eye-catcher__name {
     font-family: 'Roboto-Medium';
-    font-size: var(--fs-l);
+    font-size: var(--cv_fs-l);
+    white-space: nowrap;
+    max-width: 20ch;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .CV__eye-catcher__right-group {
@@ -42,55 +50,69 @@
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    gap: var(--gap-s);
+    gap: var(--cv_gap-s);
 }
 
 .CV__eye-catcher__localization-icon {
     width: 8px;
     height: 8px;
-    fill: var(--clr-grey-r);
+    fill: var(--cv_clr-grey-r);
+}
+
+.CV__eye-catcher__localization-text {
+    white-space: nowrap;
+    max-width: 40ch;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .CV__eye-catcher__work-field {
     font-family: 'Roboto-Regular';
-    color: var(--clr-accent);
-    font-size: var(--fs-s);
+    color: var(--cv_clr-accent);
+    font-size: var(--cv_fs-s);
+    white-space: nowrap;
+    max-width: 35ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .CV__eye-catcher__localization {
     font-family: 'Roboto-Regular';
-    color: var(--clr-grey-r);
-    font-size: var(--fs-s);
+    color: var(--cv_clr-grey-r);
+    font-size: var(--cv_fs-s);
 }
 
 .CV__entries {
     display: flex;
     flex-direction: column;
-    gap: var(--gap-m);
+    gap: var(--cv_gap-sm);
 }
 
 .CV__entry-and-bar-group {
     display: flex;
     flex-direction: row;
-    gap: var(--gap-l);
+    gap: var(--cv_gap-l);
 }
 
 .CV__entry-title {
     font-family: 'Roboto-Bold';
     color: var(--clr-grey-b);
-    font-size: var(--fs-s);
+    font-size: var(--cv_fs-s);
+    max-width: 50ch;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .CV__entry-date {
     font-family: 'Roboto-Regular';
-    font-size: var(--fs-s);
+    font-size: var(--cv_fs-s);
     color: var(--clr-accent);
 }
 
 .CV__bar {
-    background-color: var(--clr-grey-l);
+    background-color: var(--cv_clr-grey-l);
     width: 1px;
     height: 100%;
     flex-shrink: 0;
 }
-

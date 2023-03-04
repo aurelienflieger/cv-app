@@ -12,6 +12,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     padding: var(--l);
+    gap: var(--s);
 }
 
 .default-text {
@@ -20,6 +21,7 @@
     font-family: 'Roboto-Regular';
     font-size: var(--fs-m);
     justify-self: center;
+    text-align: center;
 }
 
 .default-svg {
@@ -183,4 +185,13 @@
     .reviewed-section-box>.picture>.picture-area>.uploaded-picture__wrapper.uncropped::after {
         transform: translateY(-110%) translateX(70%);
     }
+}
+
+@media (max-width: 500px) {
+    .reviewed-section-box>main>form,
+    .reviewed-section-box>.picture,
+    .reviewed-section-box>.multiple-entries {
+        padding: var(--xs);
+    }
+
 }

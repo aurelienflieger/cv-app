@@ -10,14 +10,14 @@ import TemplateForm from "./Templates/TemplateForm";
 
 const MultipleEntries = ({
   currentSectionName,
-  dataHistory,
+  sectionHistory,
   eventHandlers,
   reviewMode,
 }) => {
   const { displayNextPage, handleSubmission } = eventHandlers;
   const [entryBeingEdited, setEntryBeingEdited] = useState({});
   const [savedEntries, setSavedEntries] = useState(
-    !!dataHistory ? dataHistory : []
+    !!sectionHistory ? sectionHistory : []
   );
   const [workingOnEntry, setWorkingOnEntry] = useState(false);
 
@@ -127,7 +127,7 @@ const MultipleEntries = ({
         ) : (
           <SkipSectionButton
             customHandler={() => {
-              displayNextPage("Optional");
+              displayNextPage("toNextOptionalPage");
             }}
           />
         ))}

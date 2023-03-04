@@ -1,0 +1,44 @@
+.section.download {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    gap: var(--m);
+}
+
+.trigger-download.button {
+    background-color: var(--clr-accent);
+}
+
+.CV-mock {
+    box-shadow: var(--box-shadow);
+    width: 100%;
+}
+
+@media (max-width: 700px) {
+    .trigger-download.button {
+        background-color: var(--clr-accent);
+        background-image: url('../../assets/Download/download.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        color: transparent;
+        cursor: pointer;
+        border-radius: 50%;
+        min-height: 80px;
+        width: 80px;
+    }
+
+    .trigger-download.button:hover {
+        background-image: url('../../assets/Download/download_hover.png');
+    }
+
+    .trigger-download.button:active {
+        transform: var(--scale-clicked);
+    }
+
+    .trigger-download.button:hover {
+        border: 5px solid var(--clr-btn-1);
+    }
+}

@@ -1,10 +1,10 @@
 input[type='date'] {
     font-size: clamp(12px, var(--fs-sm), 18px);
-    opacity: 30%;
+    opacity: 100%;
 }
 
-input[type='date']:focus {
-    opacity: 100%;
+input[type='date']::placeholder {
+    opacity: 30%;
 }
 
 .input-box,
@@ -76,7 +76,7 @@ input[type='date']:focus {
     font-size: var(--fs-input);
 }
 
-.label-feedback__box{
+.label-feedback__box {
     display: flex;
     justify-content: space-between;
     padding-right: var(--s);
