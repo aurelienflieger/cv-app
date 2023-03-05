@@ -1,0 +1,160 @@
+.home-screen {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--clr-accent);
+    color: var(--clr-white);
+}
+
+
+.home-screen__header {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.home-screen__header__nav {
+    margin: auto;
+    display: flex;
+    font-family: 'Roboto-Light';
+    flex-direction: row;
+    justify-content: center;
+    width: 50%;
+}
+
+.home-screen__header__nav__list {
+    font-size: var(--fs-sm);
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+.home-screen__main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 2rem;
+}
+
+.home-screen__main__title {
+    font-family: 'Roboto-Bold';
+    font-size: var(--fs-xl);
+    text-align: center;
+
+}
+
+.home-screen__main__description {
+    font-family: 'Roboto-Light';
+    font-size: var(--fs-m);
+    text-align: center;
+
+}
+
+.home-screen .CV-mock {
+    width: 100%;
+    height: 100%;
+    box-shadow: var(--box-shadow);
+}
+
+.CV-mock__wrapper {
+    height: fit-content;
+    max-height: 800px;
+    min-height: 200px;
+    width: fit-content;
+    max-width: 600px;
+    min-width: 200px;
+}
+
+.home-screen #CV-mock__picture {
+    animation: appear 3s linear 1s 1 both;
+    opacity: 0;
+}
+
+.home-screen .CV-mock__filled-bar {
+    fill: grey;
+    animation: grow 3s ease-in 1s 1 both;
+
+}
+
+.home-screen .CV-mock__text-block {
+    animation: appear 3s ease-in 1s 1 both;
+    opacity: 0;
+}
+
+.home-screen .CV-mock__text-block:hover,
+#CV-mock__picture:hover {
+    transform: scale(0.99);
+    fill: var(--clr-grey-200)
+}
+
+.home-screen .CV-mock__bar:hover {
+    animation: shake 0.8s ease-in 1 both;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes grow {
+    from {
+        fill: #e5e5e5;
+    }
+
+    to {
+        fill: #d9739c;
+    }
+}
+
+@keyframes shake {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    15% {
+        transform: translateX(-1px)
+    }
+
+    30% {
+        transform: translateX(1px)
+    }
+
+    45% {
+        transform: translateX(-1px)
+    }
+
+    60% {
+        transform: translateX(1px)
+    }
+
+    75% {
+        transform: translateX(-1px)
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 500px) {
+    .home-screen__main__title {
+        font-size: 24px;
+    }
+
+    .CV-mock__wrapper {
+        height: 50%;
+        width: 50%;
+    }
+}

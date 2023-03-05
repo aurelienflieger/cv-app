@@ -173,4 +173,7 @@
     .picture-area {
         gap: var(--l);
     }
+    .uploaded-picture__wrapper.uncropped::after {
+        transform: translate(60%, -130%);
+    }
 }

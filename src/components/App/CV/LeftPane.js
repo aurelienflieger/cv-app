@@ -56,7 +56,7 @@ const LocalizationIcon = () => {
 
 const EyeCatcher = ({ dataHistory }) => {
   const { Information, Picture } = dataHistory;
-  const defaultPicture = require("../../../assets/Picture/generic-user.png");
+  const defaultPicture = require("../../../assets/cv/default-user.jpg");
   return (
     <div className="CV__eye-catcher">
       <img

@@ -1,18 +1,19 @@
 import React from "react";
 
-const CVMock = () => {
+function CVMock() {
   return (
     <svg
-      className="CV-mock"
       xmlns="http://www.w3.org/2000/svg"
+      className="CV-mock"
       version="1.1"
       viewBox="0 0 210 297"
       xmlSpace="preserve"
     >
-      <g>
+      <g id="CV-mock-layer">
         <rect
+          id="CV-mock__background"
           width="210"
-          height="297"
+          height="297.1"
           x="0"
           y="0"
           fill="#fff"
@@ -22,10 +23,11 @@ const CVMock = () => {
           strokeLinejoin="round"
           strokeOpacity="0.949"
           strokeWidth="2.1"
-          ry="2.853"
+          ry="2.854"
         ></rect>
         <path
-          fill="#fff"
+          id="CV-mock__separation-line"
+          fill="#ccc"
           fillOpacity="1"
           stroke="#e5e5e5"
           strokeDasharray="none"
@@ -33,206 +35,47 @@ const CVMock = () => {
           strokeLinejoin="round"
           strokeOpacity="0.949"
           strokeWidth="0.3"
-          d="M14.334 34.62a16.188 16.188 0 013.905-22.547 16.188 16.188 0 0122.55 3.884 16.188 16.188 0 01-3.863 22.554 16.188 16.188 0 01-22.558-3.844"
+          d="M144.14 9.115v278.87"
         ></path>
-        <path
-          fill="#fff"
-          fillOpacity="1"
-          stroke="#e5e5e5"
-          strokeDasharray="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeOpacity="0.949"
-          strokeWidth="0.3"
-          d="M144.14 9.112v278.776"
-        ></path>
-        <path
-          fill="#999"
-          strokeWidth="0.038"
-          d="M27.535 11.778a5.786 5.786 0 00-3.028.843c-1.47.908-2.438 2.294-2.803 4.011-.113.528-.123 1.682-.021 2.206.141.723.413 1.454.75 2.017.99 1.652 2.593 2.683 4.535 2.916.062.008.308.015.547.018 2.843.032 5.277-1.954 5.888-4.805.076-.36.087-.51.086-1.22-.001-.691-.014-.865-.084-1.179-.41-1.842-1.523-3.314-3.138-4.152a5.927 5.927 0 00-2.732-.655zm1.268 14.964c-.419 0-.903 0-1.458.003-2.853.012-3.24.021-3.533.08-1.288.255-2.39.83-3.287 1.712-.922.908-1.5 1.961-1.803 3.283l-.083.365-.013 4.873-.004 1.924c.073.051 8.677 6.103 17.904-.042v-1.53c0-2.903-.014-4.66-.04-4.91-.308-3.022-2.598-5.373-5.578-5.726-.186-.022-.85-.032-2.105-.032z"
-          opacity="1"
-        ></path>
-        <rect
-          width="51.746"
-          height="16.971"
-          x="52.854"
-          y="16.815"
-          fill="#e5e5e5"
-          fillOpacity="1"
-          stroke="none"
-          strokeDasharray="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeOpacity="0.949"
-          strokeWidth="0.3"
-          opacity="1"
-          ry="3.071"
-        ></rect>
-        <rect
-          width="50.875"
-          height="7.427"
-          x="11.088"
-          y="56.427"
-          fill="#d9739c"
-          fillOpacity="1"
-          stroke="none"
-          strokeDasharray="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeOpacity="0.949"
-          strokeWidth="0.197"
-          opacity="1"
-          ry="1.344"
-        ></rect>
-        <rect
-          width="119.119"
-          height="24.78"
-          x="14.274"
-          y="72.053"
-          fill="#e5e5e5"
-          fillOpacity="1"
-          stroke="none"
-          strokeDasharray="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeOpacity="0.949"
-          strokeWidth="0.55"
-          opacity="1"
-          ry="4.483"
-        ></rect>
-        <rect
-          width="50.875"
-          height="7.427"
-          x="11.088"
-          y="109.216"
-          fill="#d9739c"
-          fillOpacity="1"
-          stroke="none"
-          strokeDasharray="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeOpacity="0.949"
-          strokeWidth="0.197"
-          opacity="1"
-          ry="1.344"
-        ></rect>
-        <rect
-          width="119.119"
-          height="78.856"
-          x="14.274"
-          y="124.841"
-          fill="#e5e5e5"
-          fillOpacity="1"
-          stroke="none"
-          strokeDasharray="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeOpacity="0.949"
-          strokeWidth="0.981"
-          opacity="1"
-          ry="14.267"
-        ></rect>
-        <rect
-          width="50.875"
-          height="7.427"
-          x="11.088"
-          y="216.08"
-          fill="#d9739c"
-          fillOpacity="1"
-          stroke="none"
-          strokeDasharray="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeOpacity="0.949"
-          strokeWidth="0.197"
-          opacity="1"
-          ry="1.344"
-        ></rect>
-        <rect
-          width="119.119"
-          height="51.672"
-          x="14.274"
-          y="231.706"
-          fill="#e5e5e5"
-          fillOpacity="1"
-          stroke="none"
-          strokeDasharray="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeOpacity="0.949"
-          strokeWidth="0.794"
-          opacity="1"
-          ry="9.349"
-        ></rect>
-        <rect
-          width="50.875"
-          height="24.78"
-          x="153.357"
-          y="31.277"
-          fill="#e5e5e5"
-          fillOpacity="1"
-          stroke="none"
-          strokeDasharray="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeOpacity="0.949"
-          strokeWidth="0.359"
-          opacity="1"
-          ry="5.782"
-        ></rect>
-        <rect
-          width="50.875"
-          height="7.427"
-          x="153.357"
-          y="17.672"
-          fill="#d9739c"
-          fillOpacity="1"
-          stroke="none"
-          strokeDasharray="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeOpacity="0.949"
-          strokeWidth="0.197"
-          opacity="1"
-          ry="1.344"
-        ></rect>
-        <rect
-          width="50.875"
-          height="7.427"
-          x="153.357"
-          y="75.565"
-          fill="#d9739c"
-          fillOpacity="1"
-          stroke="none"
-          strokeDasharray="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeOpacity="0.949"
-          strokeWidth="0.197"
-          opacity="1"
-          ry="1.344"
-        ></rect>
-        <g
-          fillOpacity="1"
-          stroke="none"
-          strokeDasharray="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeOpacity="0.949"
-          strokeWidth="0.107"
-        >
-          <path
-            fill="#d9739c"
-            d="M153.357 96.833v2.215h25.438v-2.215h-25.438z"
-            opacity="1"
-          ></path>
-          <path
+        <g id="CV-mock__eye-catcher" stroke="none">
+          <g id="CV-mock__picture-group">
+            <path
+              id="CV-mock__picture-background"
+              fill="#e5e5e5"
+              fillOpacity="1"
+              strokeDasharray="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeOpacity="0.949"
+              strokeWidth="0.3"
+              d="M14.334 34.632a16.188 16.193 0 013.905-22.555 16.188 16.193 0 0122.55 3.885 16.188 16.193 0 01-3.863 22.562 16.188 16.193 0 01-22.558-3.845"
+            ></path>
+            <path
+              id="CV-mock__picture"
+              fill="#999"
+              strokeWidth="0.038"
+              d="M27.535 11.782a5.785 5.785 0 00-3.028.843c-1.47.909-2.438 2.295-2.803 4.013-.113.527-.123 1.682-.021 2.206.141.724.413 1.455.75 2.018.99 1.652 2.593 2.684 4.535 2.917.062.008.308.015.547.018 2.843.032 5.277-1.955 5.888-4.807.076-.36.087-.51.086-1.22-.001-.692-.014-.866-.084-1.18-.41-1.842-1.523-3.314-3.138-4.152a5.926 5.926 0 00-2.732-.656zm1.268 14.969c-.419 0-.903 0-1.458.003-2.853.012-3.24.021-3.533.08-1.288.255-2.39.83-3.287 1.713-.922.908-1.5 1.961-1.803 3.283l-.083.365-.013 4.876-.004 1.924c.073.051 8.677 6.105 17.904-.042v-1.53c0-2.904-.014-4.661-.04-4.912-.308-3.023-2.598-5.375-5.578-5.728-.186-.022-.85-.032-2.105-.032z"
+            ></path>
+          </g>
+          <rect
+            className="CV-mock__text-block"
+            id="CV-mock__eye-catcher-right-block"
+            width="51.746"
+            height="16.977"
+            x="52.854"
+            y="16.82"
             fill="#e5e5e5"
-            d="M178.795 96.833v2.215h25.437v-2.215z"
-            opacity="1"
-          ></path>
+            fillOpacity="1"
+            strokeDasharray="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeOpacity="0.949"
+            strokeWidth="0.3"
+            ry="3.072"
+          ></rect>
         </g>
         <g
+          id="CV-mock__introduction"
           fillOpacity="1"
           stroke="none"
           strokeDasharray="none"
@@ -240,20 +83,30 @@ const CVMock = () => {
           strokeLinejoin="round"
           strokeOpacity="0.949"
         >
-          <path
+          <rect
+            id="CV-mock__introduction-title"
+            width="50.875"
+            height="7.429"
+            x="11.088"
+            y="56.446"
             fill="#d9739c"
-            strokeWidth="0.151"
-            d="M153.515 103.534v2.215h50.313v-2.215z"
-            opacity="1"
-          ></path>
-          <path
+            strokeWidth="0.197"
+            ry="1.344"
+          ></rect>
+          <rect
+            className="CV-mock__text-block"
+            id="CV-mock__introduction-text"
+            width="119.119"
+            height="24.789"
+            x="14.274"
+            y="72.077"
             fill="#e5e5e5"
-            strokeWidth="0.081"
-            d="M190.803 103.44v2.404h13.294v-2.404z"
-            opacity="1"
-          ></path>
+            strokeWidth="0.55"
+            ry="4.485"
+          ></rect>
         </g>
         <g
+          id="CV-mock__career"
           fillOpacity="1"
           stroke="none"
           strokeDasharray="none"
@@ -261,184 +114,294 @@ const CVMock = () => {
           strokeLinejoin="round"
           strokeOpacity="0.949"
         >
-          <path
+          <rect
+            id="CV-mock__career-title"
+            width="50.875"
+            height="7.429"
+            x="11.088"
+            y="109.253"
             fill="#d9739c"
-            strokeWidth="0.151"
-            d="M153.515 110.235v2.216h12.561v-2.216h-12.56z"
-            opacity="1"
-          ></path>
-          <path
+            strokeWidth="0.197"
+            ry="1.344"
+          ></rect>
+          <rect
+            className="CV-mock__text-block"
+            id="CV-mock__career-text"
+            width="119.119"
+            height="78.882"
+            x="14.274"
+            y="124.883"
             fill="#e5e5e5"
-            strokeWidth="0.131"
-            d="M166.076 110.235v2.216h38.02v-2.216z"
-            opacity="1"
-          ></path>
-        </g>
-        <rect
-          width="50.875"
-          height="7.427"
-          x="153.357"
-          y="155.919"
-          fill="#d9739c"
-          fillOpacity="1"
-          stroke="none"
-          strokeDasharray="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeOpacity="0.949"
-          strokeWidth="0.197"
-          opacity="1"
-          ry="1.344"
-        ></rect>
-        <g
-          fillOpacity="1"
-          stroke="none"
-          strokeDasharray="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeOpacity="0.949"
-          strokeWidth="0.107"
-          transform="translate(0 80.354)"
-        >
-          <path
-            fill="#d9739c"
-            d="M153.357 96.833v2.215h25.438v-2.215z"
-            opacity="1"
-          ></path>
-          <path
-            fill="#e5e5e5"
-            d="M178.795 96.833v2.215h25.437v-2.215z"
-            opacity="1"
-          ></path>
+            strokeWidth="0.981"
+            ry="14.272"
+          ></rect>
         </g>
         <g
+          id="CV-mock__education"
           fillOpacity="1"
           stroke="none"
           strokeDasharray="none"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeOpacity="0.949"
-          transform="translate(0 80.354)"
         >
-          <path
+          <rect
+            id="CV-mock__education-title"
+            width="50.875"
+            height="7.429"
+            x="11.088"
+            y="216.153"
             fill="#d9739c"
-            strokeWidth="0.151"
-            d="M153.515 103.534v2.215h50.313v-2.215z"
-            opacity="1"
-          ></path>
-          <path
+            strokeWidth="0.197"
+            ry="1.344"
+          ></rect>
+          <rect
+            className="CV-mock__text-block"
+            id="CV-mock__education-text"
+            width="119.119"
+            height="51.689"
+            x="14.274"
+            y="231.784"
             fill="#e5e5e5"
-            strokeWidth="0.081"
-            d="M190.803 103.44v2.404h13.294v-2.404z"
-            opacity="1"
-          ></path>
+            strokeWidth="0.794"
+            ry="9.352"
+          ></rect>
         </g>
         <g
+          id="CV-mock__details"
           fillOpacity="1"
           stroke="none"
           strokeDasharray="none"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeOpacity="0.949"
-          transform="translate(0 80.354)"
         >
-          <path
-            fill="#d9739c"
-            strokeWidth="0.151"
-            d="M153.515 110.235v2.215h12.561v-2.215z"
-            opacity="1"
-          ></path>
-          <path
+          <rect
+            className="CV-mock__text-block"
+            id="CV-mock__details-text"
+            width="50.875"
+            height="24.789"
+            x="153.357"
+            y="31.287"
             fill="#e5e5e5"
-            strokeWidth="0.131"
-            d="M166.076 110.235v2.216h38.02v-2.216z"
-            opacity="1"
-          ></path>
-        </g>
-        <rect
-          width="50.875"
-          height="7.427"
-          x="153.357"
-          y="236.273"
-          fill="#d9739c"
-          fillOpacity="1"
-          stroke="none"
-          strokeDasharray="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeOpacity="0.949"
-          strokeWidth="0.197"
-          opacity="1"
-          ry="1.344"
-        ></rect>
-        <g
-          fillOpacity="1"
-          stroke="none"
-          strokeDasharray="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeOpacity="0.949"
-          strokeWidth="0.107"
-          transform="translate(0 160.709)"
-        >
-          <path
+            strokeWidth="0.36"
+            ry="5.784"
+          ></rect>
+          <rect
+            id="CV-mock__details-title"
+            width="50.875"
+            height="7.429"
+            x="153.357"
+            y="17.678"
             fill="#d9739c"
-            d="M153.357 96.833v2.215h25.438v-2.215z"
-            opacity="1"
-          ></path>
-          <path
-            fill="#e5e5e5"
-            d="M178.795 96.833v2.215h25.437v-2.215z"
-            opacity="1"
-          ></path>
+            strokeWidth="0.197"
+            ry="1.344"
+          ></rect>
         </g>
         <g
+          id="CV-mock__tools"
           fillOpacity="1"
           stroke="none"
           strokeDasharray="none"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeOpacity="0.949"
-          transform="translate(0 160.709)"
         >
-          <path
+          <rect
+            id="CV-mock__tools-title"
+            width="50.875"
+            height="7.429"
+            x="153.357"
+            y="75.59"
             fill="#d9739c"
-            strokeWidth="0.151"
-            d="M153.515 103.534v2.215h50.313v-2.215z"
-            opacity="1"
-          ></path>
-          <path
-            fill="#e5e5e5"
-            strokeWidth="0.081"
-            d="M190.803 103.44v2.404h13.294v-2.404z"
-            opacity="1"
-          ></path>
+            strokeWidth="0.197"
+            ry="1.344"
+          ></rect>
+          <g
+            className="CV-mock__bar"
+            id="CV-mock__tools-bar1"
+            strokeWidth="0.107"
+          >
+            <path
+              className="CV-mock__filled-bar"
+              id="CV-mock__tools-bar1-filled"
+              fill="#d9739c"
+              d="M153.357 96.865v2.217h25.438v-2.217z"
+            ></path>
+            <path
+              id="CV-mock__tools-bar1-unfilled"
+              fill="#e5e5e5"
+              d="M178.795 96.865v2.217h25.437v-2.217z"
+            ></path>
+          </g>
+          <g className="CV-mock__bar" id="CV-mock__tools-bar2">
+            <path
+              className="CV-mock__filled-bar"
+              id="CV-mock__tools-bar2-filled"
+              fill="#d9739c"
+              strokeWidth="0.151"
+              d="M153.515 103.569v2.216h50.313v-2.216z"
+            ></path>
+            <path
+              id="CV-mock__tools-bar2-unfilled"
+              fill="#e5e5e5"
+              strokeWidth="0.081"
+              d="M190.803 103.475v2.404h13.294v-2.404z"
+            ></path>
+          </g>
+          <g className="CV-mock__bar" id="CV-mock__tools-bar3">
+            <path
+              className="CV-mock__filled-bar"
+              id="CV-mock__tools-bar3-filled"
+              fill="#d9739c"
+              strokeWidth="0.151"
+              d="M153.515 110.272v2.216h12.561v-2.216z"
+            ></path>
+            <path
+              id="CV-mock__tools-bar3-unfilled"
+              fill="#e5e5e5"
+              strokeWidth="0.131"
+              d="M166.076 110.272v2.217h38.02v-2.217z"
+            ></path>
+          </g>
         </g>
         <g
+          id="CV-mock__hobbies"
           fillOpacity="1"
           stroke="none"
           strokeDasharray="none"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeOpacity="0.949"
-          transform="translate(0 160.709)"
         >
-          <path
+          <rect
+            id="CV-mock__Hobbies-title"
+            width="50.875"
+            height="7.429"
+            x="153.357"
+            y="155.972"
             fill="#d9739c"
-            strokeWidth="0.151"
-            d="M153.515 110.235v2.215h12.561v-2.215z"
-            opacity="1"
-          ></path>
-          <path
-            fill="#e5e5e5"
-            strokeWidth="0.131"
-            d="M166.076 110.235v2.216h38.02v-2.216z"
-            opacity="1"
-          ></path>
+            strokeWidth="0.197"
+            ry="1.344"
+          ></rect>
+          <g
+            className="CV-mock__bar"
+            id="CV-mock__hobbies-bar1"
+            strokeWidth="0.107"
+          >
+            <path
+              className="CV-mock__filled-bar"
+              id="CV-mock__hobbies-bar1-filled"
+              fill="#d9739c"
+              d="M153.357 177.247v2.216h25.438v-2.216z"
+            ></path>
+            <path
+              id="CV-mock__hobbies-bar1-unfilled"
+              fill="#e5e5e5"
+              d="M178.795 177.247v2.216h25.437v-2.216z"
+            ></path>
+          </g>
+          <g className="CV-mock__bar" id="CV-mock__hobbies-bar2">
+            <path
+              className="CV-mock__filled-bar"
+              id="CV-mock__hobbies-bar2-filled"
+              fill="#d9739c"
+              strokeWidth="0.151"
+              d="M153.515 183.95v2.217h50.313v-2.217z"
+            ></path>
+            <path
+              id="CV-mock__hobbies-bar2-unfilled"
+              fill="#e5e5e5"
+              strokeWidth="0.081"
+              d="M190.803 183.856v2.405h13.294v-2.405z"
+            ></path>
+          </g>
+          <g className="CV-mock__bar" id="CV-mock__hobbies-bar3">
+            <path
+              className="CV-mock__filled-bar"
+              id="CV-mock__hobbies-bar3-filled"
+              fill="#d9739c"
+              strokeWidth="0.151"
+              d="M153.515 190.654v2.216h12.561v-2.216z"
+            ></path>
+            <path
+              id="CV-mock__hobbies-bar3-unfilled"
+              fill="#e5e5e5"
+              strokeWidth="0.131"
+              d="M166.076 190.654v2.216h38.02v-2.216z"
+            ></path>
+          </g>
+        </g>
+        <g
+          id="CV-mock__languages"
+          fillOpacity="1"
+          stroke="none"
+          strokeDasharray="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeOpacity="0.949"
+        >
+          <rect
+            id="CV-mock__languages-title"
+            width="50.875"
+            height="7.429"
+            x="153.357"
+            y="236.353"
+            fill="#d9739c"
+            strokeWidth="0.197"
+            ry="1.344"
+          ></rect>
+          <g
+            className="CV-mock__bar"
+            id="CV-mock__languages-bar1"
+            strokeWidth="0.107"
+          >
+            <path
+              className="CV-mock__filled-bar"
+              id="CV-mock__languages-bar1-filled"
+              fill="#d9739c"
+              d="M153.357 257.628v2.216h25.438v-2.216z"
+            ></path>
+            <path
+              id="CV-mock__languages-bar1-unfilled"
+              fill="#e5e5e5"
+              d="M178.795 257.628v2.216h25.437v-2.216z"
+            ></path>
+          </g>
+          <g className="CV-mock__bar" id="CV-mock__languages-bar2">
+            <path
+              className="CV-mock__filled-bar"
+              id="CV-mock__languages-bar2-filled"
+              fill="#d9739c"
+              strokeWidth="0.151"
+              d="M153.515 264.332v2.216h50.313v-2.216z"
+            ></path>
+            <path
+              id="CV-mock__languages-bar2-unfilled"
+              fill="#e5e5e5"
+              strokeWidth="0.081"
+              d="M190.803 264.238v2.404h13.294v-2.404z"
+            ></path>
+          </g>
+          <g className="CV-mock__bar" id="CV-mock__languages-bar3">
+            <path
+              className="CV-mock__filled-bar"
+              id="CV-mock__languages-bar3-filled"
+              fill="#d9739c"
+              strokeWidth="0.151"
+              d="M153.515 271.035v2.216h12.561v-2.216z"
+            ></path>
+            <path
+              id="CV-mock__languages-bar3-unfilled"
+              fill="#e5e5e5"
+              strokeWidth="0.131"
+              d="M166.076 271.035v2.216h38.02v-2.216z"
+            ></path>
+          </g>
         </g>
       </g>
     </svg>
   );
-};
+}
 
 export default CVMock;

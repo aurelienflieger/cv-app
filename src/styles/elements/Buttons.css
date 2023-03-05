@@ -96,6 +96,13 @@
     pointer-events: none;
 }
 
+.button.start {
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: var(--clr-btn);
+    transform: scale(1.2);
+}
+
 @media (max-width: 500px) {
     .add-entry__text {
         display: none;

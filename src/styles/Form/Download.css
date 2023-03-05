@@ -12,7 +12,7 @@
     background-color: var(--clr-accent);
 }
 
-.CV-mock {
+.section.download .CV-mock {
     box-shadow: var(--box-shadow);
     width: 100%;
 }

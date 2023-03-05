@@ -35,6 +35,7 @@ const FormManager = ({ isSmallScreen }) => {
     ...sectionNames.optional,
   ]);
   const [reviewSections] = useState([...sectionNames.review]);
+
   useEffect(() => console.log(mandatorySections));
 
   function DynamicComponent({ sectionName, additionalProps }) {
@@ -82,8 +83,12 @@ const FormManager = ({ isSmallScreen }) => {
   }
 
   function displayNextMandatoryPage(index) {
+    const lastPageException = !!(index === 1) && !mandatorySections[1];
     setCurrentSectionData((prev) => {
-      return { name: mandatorySections[index], number: prev.number + 1 };
+      return {
+        name: mandatorySections[lastPageException ? 0 : index],
+        number: prev.number + 1,
+      };
     });
     setMandatorySections((prev) => prev.slice(1));
   }

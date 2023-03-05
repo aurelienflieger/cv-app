@@ -1,4 +1,4 @@
-const mockedDataHistory = {
+export const mockedDataHistory = {
   Information: {
     firstName: "Alfonse",
     lastName: "Brown",

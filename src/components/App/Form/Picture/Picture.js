@@ -22,8 +22,6 @@ const Picture = ({ currentSectionName, eventHandlers, reviewMode }) => {
     toggleUploadMode(true);
   };
 
-  useEffect(() => console.log(croppedPicture))
-
   const saveCroppedPicture = () => {
     const cropper = cropperRef.current.cropper;
     setCroppedPicture(cropper.getCroppedCanvas().toDataURL());

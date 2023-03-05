@@ -5,6 +5,7 @@
     --fs-sm: calc(12px + 0.390625vw);
     --fs-m: calc(14px + 0.390625vw);
     --fs-l: calc(24px + 0.390625vw);
+    --fs-xl: calc(48px + 0.390625vw);
     /* for margin, padding, gap */
     --xxs: 0.2rem;
     --xs: 0.5rem;
