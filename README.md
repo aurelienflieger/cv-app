@@ -30,3 +30,10 @@
 ## About the materials used
 I made the icons and artwork using Inkscape, save for the *upload* and *download* buttons.
 The background images are from Unsplash.
+
+## Known issues
+- due to the way I manage  the optional layout of multiple entries forms with CSS Grid, the 'from' fields are only accessible after the optional 'to' fields when browsing the page with the keyboard. This leads to a confusing navigation experience & hinders accessibility.
+
+## Author
+ElMoscaviador
+https://github.com/ElMoscaviador/cv-app
