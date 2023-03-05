@@ -1,13 +1,14 @@
 # CV App - made for The Odin Project
 
 ## Goals
-- creating a professional-looking tool
-- allowing the user to download their CV 
+- create a professional-looking tool
+- allow the user to download their CV 
+- create & include reactive SVG images
 
 ## Features
 - add, edit and review your custom information
 - download your CV as a PDF
-- do this responsively on any screen
+- browse responsively on any screen
 
 ## Sections
 - Personal Information `mandatory section`
@@ -28,7 +29,7 @@
 - mui
 
 ## About the materials used
-I made the icons and artwork using Inkscape, save for the *upload* and *download* buttons.
+I made the icons and artwork using Inkscape, save for the *upload* and *download* buttons which are from Material Icons.
 The background images are from Unsplash.
 
 ## Known issues
