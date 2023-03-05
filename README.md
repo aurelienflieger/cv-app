@@ -1,9 +1,12 @@
 # CV App - made for The Odin Project
 
 ## Goals
-- create a professional-looking tool
-- allow the user to download their CV 
-- create & include reactive SVG images
+- allow to user to create their own custom CV
+- lead the user through both mandatory & optional sections for maximum flexibility
+- let the user review the entered information
+- allow the user to download a PDF version of their created CV
+- extensively use interactive SVG elements for a livelier browsing experience
+- offer a responsive browsing experience & adapt the UI for every screen size
 
 ## Features
 - add, edit and review your custom information
@@ -23,10 +26,10 @@
 - Download page `mandatory section`
 
 ## Extensions used
-- croppper-js
-- formik
-- html2canvas & jspdf
-- mui
+- cropper-js for cropping the profile picture
+- formik to handle forms
+- html2canvas & jspdf to convert the HTLML CV to PDF
+- mui for react media queries
 
 ## About the materials used
 I made the icons and artwork using Inkscape, save for the *upload* and *download* buttons which are from Material Icons.
@@ -38,3 +41,6 @@ The background images are from Unsplash.
 ## Author
 ElMoscaviador
 https://github.com/ElMoscaviador/cv-app
+
+## Time spent learning, planning, designing & coding for this project
+130hrs
