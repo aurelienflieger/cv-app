@@ -1,0 +1,41 @@
+class OptionalSectionsSelector {
+    constructor() {
+        this.state = {
+            selectedSections: { 
+            ProfilePicture: false
+            Career: false
+            Education: false
+            Hobbies: false
+            Tools: false
+            Languages: false
+            }
+            currentIndex: 0;
+            sectionsToDisplay: []
+        }
+
+    }
+
+    toggleSelection(sectionName) {
+        this.setState(() => {
+            return {...this.state, [sectionName]: !sectionName}
+        })
+    }
+
+    render() {
+        const {saveDataAndDisplayNextPage, displayNextPage}= this.props;
+
+        const displayNextSelection = displayNextPage.bind(this)
+
+        return (
+            {!!sectionsSelected ? <this.state.sectionsToDisplay[this.state.currentIndex] displayNextSelection={displayNextSelection}/> : 
+            <div class='optional-section-togglers'>
+            {this.sections.map((section) => {
+                <OptionalTogglerCheckbox toggleSelection={() => toggleSelection(section)}/>
+            })}
+            </div>
+            <AddSelectionsButton displayOptionalSections={this.displayOptionalSections}/>
+            <SkipSectionButton displayNextPage={displayNextPage}/>
+            }
+        )
+    }
+}

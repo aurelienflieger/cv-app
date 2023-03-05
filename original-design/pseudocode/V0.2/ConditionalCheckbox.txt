@@ -1,0 +1,20 @@
+const ConditionalCheckbox = ({label, displayToField}) => {
+    const [field, meta] = useField({ ...props, type: 'checkbox' });
+
+    return (
+        <div className='conditional-checkbox__wrapper'>
+        <label className='conditional-checkbox__label' htmlFor='conditional-checkbox'>
+        {label}
+        <input class='conditional-checkbox' name='conditional-checkbox' type='checkbox'
+        onBlur={props.handleBlur}
+        onChange={(event) => {
+          displayToField();
+          field.onChange(event);
+        }}}/>
+        </label>
+        {meta.touched && meta.error ? (
+         <div className="error">{meta.error}</div>
+       ) : null}
+        </div>
+    )
+}

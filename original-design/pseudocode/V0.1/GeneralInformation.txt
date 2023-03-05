@@ -1,0 +1,24 @@
+class GeneralInformation {
+    render() {
+        const {saveDataAndDisplayNextPage}= this.props;
+        return (
+         <Formik
+         onSubmit(inputData) {
+            (...)
+         saveDataAndDisplayNextPage(inputData)
+            }>
+         <FirstName/>
+         <LastName/>
+         <Phone/>
+         <Email/>
+         <Home/>
+         <City/>
+         <Country/>
+         <Birthdate/>
+         <WorkField/>
+         <GoToNextSectionButton/>
+         </Formik>
+        )
+    }
+}
+

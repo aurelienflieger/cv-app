@@ -1,0 +1,12 @@
+const App = () => {
+  const [isFirstLanding, toggleHomeScreen] = useState(true);
+  return (
+    <div className="App">
+      {isFirstLanding && (
+        <HomeScreen toggleHomeScreen={toggleHomeScreen} />
+      ) : (
+        <FormManager />
+      )}
+    </div>
+  );
+};

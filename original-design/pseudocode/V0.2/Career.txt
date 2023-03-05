@@ -1,0 +1,61 @@
+import MultipleEntries from './MultipleEntries';
+
+const Career = ({displayNextPage,updateDataHistoryAndDisplayNextPage, getUniqueKey}) => {
+    return <MultipleEntries currentSectionName='career' displayNextPage={displayNextPage} updateDataHistoryAndDisplayNextPage={updateDataHistoryAndDisplayNextPage} CustomViewer={CareerEntryViewer} CustomForm={CareerForm} getUniqueKey={getUniqueKey}/>
+}
+
+const CareerEntryViewer = ({entry, prepareEntryForEdit, removeEntry}) => {
+    return (
+        <div className='entry-viewer'>
+        <span>entry.company</span>
+        <p>{entry.from} - {entry.to}</p>
+        <button className='edit-button' onClick={() => prepareEntryForEdit(entry.key)}/>
+        <button className='remove-button' onClick={() => removeEntry(entry.key)}/>
+        </div>
+    )
+}
+
+const CareerForm = ({editExistingEntry, saveNewEntry, getUniqueKey, entryBeingEdited}) => {
+
+    const [endDateDisplayed, setEndDate] = useState(true)
+
+    const toggleEndDate = () => {
+        setEndDate(!endDateDisplayed)
+    }
+
+    return (
+         <Formik initialValues={{
+            workStatus: entryBeingEdited.workStatus || false,
+            company: entryBeingEdited.workStatus || '',
+            position: entryBeingEdited.position || '',
+            from: entryBeingEdited.from || '',,
+            to: entryBeingEdited.to || '',
+            description: entryBeingEdited.description || '',
+        }}
+        validationSchema={Yup.object({
+            workStatus: Yup.boolean()
+            company: Yup.string().required('Please enter the name of the company'),
+            position: Yup.string().required('Please enter your position'),
+            from: Yup.date().required('Please enter your starting date'),
+            to: Yup.date();
+            description: Yup.string.required('Please enter a description).max(30);
+        })}
+        onSubmit={(values, {setSubmitting}) => {
+            if (!Object.values(entryBeingEdited).length)
+            saveNewEntry([...values, key: getUniqueKey()]})
+            else editExistingEntry(values, entryBeingEdited.key)
+            setSubmitting(false)
+        }}>
+        
+        <div className='section career'/>
+        <form className='form' onReset={formikProps.handleReset} onSubmit={formikProps.handleSubmit}>
+        <ConditionalCheckbox label='I am no longer working there' onClick={toggleEndDate}/>
+        <InputBox label='Company' placeholder='Microsoft' type='text/>
+       <InputBox label='Position' placeholder='CEO' type='text/>
+        <InputBox label='From' type='date'/>
+        {endDateDisplayed && <InputBox label='To' type='date'/>}
+        <TextBox/>
+        <AddNewEntryButton/>
+        </form>
+    )
+}

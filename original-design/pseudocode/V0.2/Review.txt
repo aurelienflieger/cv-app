@@ -1,0 +1,30 @@
+const Review = ({dataHistory, getUniqueKey}) => {
+    const [selectedComponent, setSelectedComponent] = useState(undefined)
+    const [default, setDefault] = useState(true)
+    const displaySelectedComponent = (event) => {
+        setDefault(false);
+        const componentToDisplay = (event.target.value).replace(/\s\g, '');
+        setSelectedComponent(componentToDisplay)
+    }
+
+    return (
+        <div className='review'>
+        <nav className='review__nav'>
+        <ul onClick={displaySelectedComponent}>
+        <li><input value='General Information' className='nav__component'/></li>
+        <li><input value='Career' className='nav__component'/></li>
+        <li><input value='Education' className='nav__component'/></li>
+        <li><input value='Hobbies' className='nav__component'/></li>
+        <li><input value='Tools' className='nav__component'/></li>
+        <li><input value='Languages' className='nav__component'/></li>
+        </ul>
+        </nav>
+        {default && <span className='review-default'>If you'd like to make changes, this is the time!</span>}
+        {selectedComponent && 
+        (<div className='component-pop-up'>
+        <{selectedComponent dataHistory={dataHistory} getUniqueKey={getUniqueKey} reviewMode}/>
+        </div>)}
+        <LeaveButton onClick={}>I'd like to download my CV</LeaveButton>
+        </div>
+    )
+}

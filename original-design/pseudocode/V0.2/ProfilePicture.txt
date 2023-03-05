@@ -1,0 +1,57 @@
+import Cropper from "react-cropper";
+import "cropperjs/dist/cropper.css";
+import {useRef, useState} from 'react';
+
+const ProfilePicture = ({displayNextPage, updateDataHistory, updateDataHistoryAndDisplayNextPage, reviewMode}) => {
+    const cropperRef = useRef(null);
+    const {isUploadMode, toggleUploadMode} = useState(true);
+    const {isCropMode, toggleCropMode} = useState(false);
+    const {uncroppedPicture, setUncroppedPicture} = useState('');
+    const {croppedPicture, setCroppedPicture} = useState('');
+
+    const saveCroppedPicture = () => {
+        const cropper = cropperRef.current.cropper;
+        setCroppedPicture(cropper.getCroppedCanvas().toDataURL());
+        toggleCropMode(false)
+    }
+
+    const startPictureCrop = (event) => {
+        setUncroppedPicture(event.target.files[0])
+        toggleUploadMode(false)
+        toggleCropMode(true)
+    }
+
+return (
+    <div className='section profile-picture'/>
+    <div className='picture__wrapper'>
+    {isUploadMode && (
+        <label htmlFor='picture-uploader'>
+        <input type='file' accept="image/png, image/jpeg" onChange={startPictureCrop}/>
+        </label>
+    )}
+    {isCropMode && 
+    <Cropper
+      src={uncroppedPicture}
+      style={{ height: 400, width: "100%" }}
+      initialAspectRatio={1 / 3}
+      guides={false}
+      crop={saveCroppedPicture}
+      ref={cropperRef}
+    />}
+    {!isUploadMode && !isCropMode && (
+        <img className='cropped-picture' alt='Your cropped profile picture' src={croppedPicture}>
+    )}
+    </div>
+    {isUploadMode && <LeaveButton onClick={displayNextPage}>I'd like to skip this section</LeaveButton>}
+    {isCropMode && <button className='confirm-button' onClick={() => toggleCropMode(false)}>I have finished cropping this picture.</button>}
+    {!isUploadMode && !isCropMode && !reviewMode && (
+        <LeaveButton onClick={() => updateDataHistoryAndDisplayNextPage(croppedPicture, 'profile-picture'))}>I'd like to move on to the next section.</LeaveButton>
+        <button className='retry-button' onClick={() => toggleUploadMode(true)}>I'd like to try again.</button>
+    )}
+    {!isUploadMode && !isCropMode && reviewMode && (
+        <LeaveButton onClick={updateDataHistory((savedData) => {...savedData, profilePicture: croppedPicture})}>Save your reviewed photo</LeaveButton>
+        <button className='retry-button' onClick={() => toggleUploadMode(true)}>I'd like to try again.</button>
+    )}
+    </div>
+)
+}

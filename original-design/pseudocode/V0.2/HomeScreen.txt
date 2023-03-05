@@ -1,0 +1,7 @@
+const HomeScreen = ({ toggleHomeScreen }) => {
+    return (
+         <div className="home-screen">
+         <Button className='start-button' onClick={toggleHomeScreen}>Make your CV now!</Button>
+         </div>
+    )
+};

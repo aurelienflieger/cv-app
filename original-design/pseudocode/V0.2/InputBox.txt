@@ -1,0 +1,12 @@
+ const InputBox = ({ label, ...props }) => {
+
+   const [field, meta] = useField(props);
+
+   return (
+     <div className='input-box'>
+       <label className='input-box__label' htmlFor={props.name}>{label}</label>
+       <input className="input-box__field" {...field} {...props} />
+       {meta.touched && meta.error && <div className="error">{meta.error}}
+     </div>
+   );
+ };

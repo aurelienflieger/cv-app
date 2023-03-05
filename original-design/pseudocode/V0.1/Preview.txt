@@ -1,0 +1,30 @@
+class RegularScreenPreview {
+    constructor() {
+        this.state = {
+            sectionToDisplay: ''
+            pastSectionData: {};
+        }
+    }
+
+    updateSectionToDisplay(event, globallySavedData) {
+        const selectedSection = event.target.value.split(' ').join();
+        this.setState(() => {
+            return {...this.state, sectionToDisplay: selectedSection,
+            pastSectionData: globallySavedData[selectedSection.toLowerCase()] }
+        })
+    }
+
+    render() {
+        const sectionNames = ['General Information', 'Profile Picture', 'Career', 'Education', 'Hobbies', 'Tools', 'Languages' ];
+        return (
+            <div class='sections-to-preview'>
+            <div class='sections-to-preview__names'>
+            {sectionNames.map((name) => <input type='button' value={name} onClick={updateSectionToDisplay})}
+            </div>
+            <div class='sections-to-preview__popup'>
+            {<this.state.sectionToDisplay savedEntries={this.state.pastSectionData}/>}
+            </div>
+            </div>
+        )
+    }
+}

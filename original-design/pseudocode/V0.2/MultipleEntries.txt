@@ -1,0 +1,44 @@
+const MultipleEntries = ({currentSectionName, CustomForm, CustomEntryViewer, dataHistory, displayNextPage, updateDataHistory, updateDataHistoryAndDisplayNextPage, getUniqueKey}) => {
+    const [editMenu, toggleEditMenu] = useState(false);
+    const [savedEntries, setSavedEntries] = useState(dataHistory[currentSectionName] || []);
+    const [entryBeingEdited, setEntryBeingEdited] = useState('');
+
+    const editExistingEntry = (contents, keyOfEntryToEdit) => {
+        const withoutEntryToEdit = savedEntries.map((entry) => entry.key !== keyOfEntryToEdit);
+        setSavedEntries([...withoutEntryToEdit, {...contents, key: keyOfEntryToEdit}] )
+    }
+
+    const saveNewEntry = (entryToSave) => {
+        setSavedEntries([...savedEntries, entryToSave])
+    }
+
+    const prepareEntryForEdit = (keyOfEntryToEdit) => {
+        setEntryBeingEdited(keyOfEntryToEdit)
+    }
+
+    const removeEntry = (keyOfEntryToRemove) => {
+        const withoutEntryToRemove = savedEntries.map((entry) => entry.key !== keyOfEntryToRemove);
+        setSavedEntries(withoutEntryToRemove)
+    }
+
+
+
+    return (
+        <div className='section multiple-entries'/>
+        {editMenu && <CustomForm editExistingEntry={editExistingEntry} saveNewEntry={saveNewEntry} getUniqueKey={getUniqueKey} entryBeingEdited={entryBeingEdited}/>}
+        {!editMenu && savedData.length && (
+            <div className='entries-viewer'>
+            savedEntries.map((entry) => <CustomEntryViewer entry={entry} prepareEntryForEdit={prepareEntryForEdit} removeEntry={removeEntry}/>
+            })
+            </div>
+        )}
+        {!editMenu && (
+        <AddButton className={savedEntries.length === maxEntriesAllowed ? 'disabled-button' : 'add-button'} onClick={() => toggleEditMenu(true)}>Add an experience</>
+        )}
+        {!editMenu && !savedData.length && !reviewMode && <LeaveButton onClick={displayNextPage}>I'd like to skip this section</LeaveButton>
+        {!editMenu && savedData.length && !reviewMode && <LeaveButton onClick={() => updateDataHistoryAndDisplayNextPage(savedEntries, currentSectionName)}>Move on to the next section</LeaveButton>>
+        {!editMenu && savedData.length && reviewMode && <LeaveButton onClick={() => updateDataHistory((savedData) => {...savedData, [currentSectionName]: savedEntries })}>Save reviewed contents</LeaveButton>>}
+}
+        </div>
+    )
+}

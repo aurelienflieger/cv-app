@@ -1,0 +1,52 @@
+import countriesList from './data'
+
+const GeneralInformation = ({dataHistory, reviewMode, updateDataHistory, updateDataHistoryAndDisplaySelectionMenu}) => {
+    return (
+        <Formik initialValues={{
+            firstName: dataHistory.firstName || '',
+            lastName: dataHistory.lastName || '',
+            phone: dataHistory.phone || '',
+            email: dataHistory.email || '',
+            home: dataHistory.home || '',
+            city: dataHistory.city || '',
+            country: dataHistory.country || '',
+            birthdate: dataHistory.birthdate || '',
+            workField: dataHistory.workField || '',
+        }}
+        validationSchema={Yup.object({
+            firstName: Yup.string().required('Please enter your first name.)
+            lastName: Yup.string().required('Please enter your last name.)
+            phone: Yup.number().required('Please enter your phone number.)
+            email: Yup.email().required('Please enter your email.)
+            home: Yup.string().required('Please enter your home address.)
+            city: Yup.string().required('Please enter your city.)
+            country: Yup.string().required('Please enter your country.)
+            birthdate: Yup.date().required('Please enter your birth date.)
+            workField: Yup.string().required('Please enter your work field.)
+        })}
+        onSubmit={(values, {setSubmitting}) => {
+            if (reviewMode) updateDataHistory((dataHistory) => {...dataHistory, 'general-information': dataToSave})
+            else updateDataHistoryAndDisplaySelectionMenu(values, 'general-information')
+            setSubmitting(false)
+        }}>
+        
+        <div className='section general-information'/>
+        <form className='form' onReset={formikProps.handleReset} onSubmit={formikProps.handleSubmit}>
+        <InputBox label='Your first name' placeholder='Ada' type='text' name=.../>
+       <InputBox label='Your last name' placeholder='Lovelace' type='text/>
+        <InputBox label='Your phone' placeholder='078-957-266' type='tel'/>
+        <InputBox label='Your email' placeholder='ada.lovelace@mail.com' type='email'/>
+        <InputBox label='Your home address' placeholder='3, St.James Street' type='text'/>
+        <InputBox label='Your city' placeholder='London' type='text'/>
+        <InputBoxWithDropdown contents={countriesList}/>
+        <InputBox label='Your birth date' type='date'/>
+        <InputBox label='Your work field'
+        placeholder='Computer scientist' type='text'/>
+        {!reviewMode && <LeaveButton>Move on to the next section.</LeaveButton>}
+        {reviewMode && <LeaveButton>Save your reviewed contents</LeaveButton>}
+        </form>
+        </div>
+        </Formik>
+    )
+}
+
