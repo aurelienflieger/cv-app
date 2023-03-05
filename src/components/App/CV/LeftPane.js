@@ -9,7 +9,7 @@ const Entry = ({ savedEntry }) => {
       </p>
       <p className="CV__entry-date">{`${localize(
         savedEntry.startDate
-      )} to ${localize(savedEntry.endDate)}`}</p>
+      )} to ${localize(savedEntry.endDate || 'now')}`}</p>
       <p className="CV__entry-text">{`${savedEntry.description}`}</p>
     </div>
   );
