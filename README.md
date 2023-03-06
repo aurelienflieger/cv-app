@@ -28,7 +28,7 @@
 ## Extensions used
 - cropper-js for cropping the profile picture
 - formik to handle forms
-- html2canvas & jspdf to convert the HTLML CV to PDF
+- html2canvas & jspdf to convert the HTLM CV to PDF
 - mui for react media queries
 
 ## About the materials used
