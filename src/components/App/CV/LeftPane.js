@@ -7,9 +7,9 @@ const Entry = ({ savedEntry }) => {
       <p className="CV__entry-title">
         {`${savedEntry.context} @ ${savedEntry.establishment}`}
       </p>
-      <p className="CV__entry-date">{`${localize(
+      {<p className="CV__entry-date">{`${localize(
         savedEntry.startDate
-      )} to ${localize(savedEntry.endDate || 'now')}`}</p>
+      )} to ${savedEntry.endDate ? localize(savedEntry.endDate) : 'now'}`}</p>}
       <p className="CV__entry-text">{`${savedEntry.description}`}</p>
     </div>
   );

@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import Frame from "../../Frame/Frame";
 import HookAndCounter from "../../elements/HookAndCounter";
 import Information from "../Information/Information";
@@ -35,8 +35,6 @@ const FormManager = ({ isSmallScreen }) => {
     ...sectionNames.optional,
   ]);
   const [reviewSections] = useState([...sectionNames.review]);
-
-  useEffect(() => console.log(mandatorySections));
 
   function DynamicComponent({ sectionName, additionalProps }) {
     const props = {
