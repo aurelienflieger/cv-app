@@ -1,4 +1,5 @@
 import CVMock from "../Form/Download/CVMock";
+import github from "../../../assets/HomeScreen/github.svg";
 
 const HomeScreen = ({ toggleHomeScreen }) => {
   return (
@@ -33,6 +34,12 @@ const HomeScreen = ({ toggleHomeScreen }) => {
           Make your CV
         </button>
       </section>
+      <footer>
+        <a href="https://github.com/ElMoscaviador">
+          <img alt="footer" src={github} />
+          <span>2023 - ElMoscaviador</span>
+        </a>
+      </footer>
     </main>
   );
 };
