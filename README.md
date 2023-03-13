@@ -5,7 +5,7 @@ https://github.com/ElMoscaviador/cv-app
 ---
 ## ALL ABOUT THE PROJECT
 
-Thank you for trying my CV app!
+Welcome to my CV app. I don't know if it looks like it - I sure hope it does, at least a bit - but this was a labor of love. I appreciate you checking it out!
 
 ### DESCRIPTION
 This app allows you to create your own custom Curriculum Vitae.
@@ -91,7 +91,8 @@ The CV App is the latest project I was asked to tackle as part of the course.
 ### WHAT MY LEARNING TARGETS WERE FOR THIS PROJECT
 - Thinking in React
 - Understanding the difference between state & props
-- Improving my CSS design patterns by limiting my options: creating matching color palettes, assigning values to variables
+- Learning how to integrate third-party packages in order not to reinvent the wheels
+- Improving my design cohesion skills by limiting my options: creating matching color palettes, using fewer values & assigning them to variables
 - Animating individual SVG units with CSS
 
 ### WHAT MY VISION FOR THIS PROJECT WAS
